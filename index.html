@@ -1,90 +1,170 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIRIMI の 魔法小屋 ✨</title>
-    
-    <!-- SEO 魔法标签 -->
-    <meta name="description" content="GIRIMI 的个人魔法小屋，展示代码与创意。">
-    <meta property="og:title" content="GIRIMI の 魔法小屋 ✨">
-    <meta property="og:description" content="欢迎来到本小姐精心打造的数字乐园！">
-    <meta property="og:image" content="https://raw.githubusercontent.com/lucide-react/lucide/main/icons/heart.svg">
+    <title>GIRIMI | Creative Developer</title>
 
-    <!-- Tailwind CSS CDN -->
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="GIRIMI's Portfolio - Creative Developer & Software Engineering Student.">
+    <meta property="og:title" content="GIRIMI | Creative Developer">
+    <meta property="og:description" content="Exploring the intersection of code and design.">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts: Plus Jakarta Sans for a modern tech feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
-        
         body {
-            font-family: 'Noto Sans SC', sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
             overflow-x: hidden;
         }
 
-        /* 纯 CSS 弥散背景动效 - 代替 Canvas */
+        /* Sophisticated Mesh Gradient */
         .mesh-bg {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
-            background: #fff;
+            background: #FAFAFA;
+            /* Light mode base */
             overflow: hidden;
             transition: background 0.7s ease;
         }
 
         .dark .mesh-bg {
-            background: #1c1917;
+            background: #09090b;
+            /* Zinc 950 */
         }
 
         .blob {
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: rgba(255, 105, 180, 0.2);
-            filter: blur(80px);
             border-radius: 50%;
+            filter: blur(100px);
             z-index: -1;
-            animation: move 20s infinite alternate;
+            opacity: 0.6;
+            animation: float 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* Premium Pink/Rose/Purple gradients */
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: #fbcfe8;
+            /* Pink 200 */
+        }
+
+        .dark .blob-1 {
+            background: #831843;
+        }
+
+        /* Pink 900 */
+
         .blob-2 {
-            background: rgba(251, 113, 133, 0.15);
-            width: 600px;
-            height: 600px;
-            right: -100px;
-            top: -100px;
+            bottom: -10%;
+            right: -10%;
+            width: 45vw;
+            height: 45vw;
+            background: #f5d0fe;
+            /* Fuchsia 200 */
             animation-delay: -5s;
         }
 
+        .dark .blob-2 {
+            background: #4c0519;
+        }
+
+        /* Rose 950 */
+
         .blob-3 {
-            background: rgba(219, 39, 119, 0.1);
-            left: -100px;
-            bottom: -100px;
+            top: 40%;
+            left: 40%;
+            width: 30vw;
+            height: 30vw;
+            background: #ffe4e6;
+            /* Rose 100 */
             animation-delay: -10s;
         }
 
-        @keyframes move {
-            from { transform: translate(0, 0) rotate(0deg); }
-            to { transform: translate(100px, 100px) rotate(360deg); }
+        .dark .blob-3 {
+            background: #701a75;
         }
 
-        .bg-gradient-text {
-            background-clip: text;
+        /* Fuchsia 900 */
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-30px, 40px) scale(1.1);
+            }
+
+            100% {
+                transform: translate(30px, -20px) scale(0.95);
+            }
+        }
+
+        /* Typography & Effects */
+        .text-gradient {
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%);
             -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(to right, #ec4899, #f43f5e, #db2777);
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dark .text-gradient {
+            background: linear-gradient(135deg, #f472b6 0%, #e879f9 50%, #fb7185 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        }
+
+        .dark .glass-panel {
+            background: rgba(24, 24, 27, 0.6);
+            /* Zinc 900 opacity */
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .nav-glass {
+            background: rgba(9, 9, 11, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .reveal.active {
@@ -92,10 +172,16 @@
             transform: translateY(0);
         }
 
-        /* 隐藏滚动条 */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #ffb6c1; border-radius: 10px; }
+        /* Custom Selection Color */
+        ::selection {
+            background: #fbcfe8;
+            color: #831843;
+        }
+
+        .dark ::selection {
+            background: #831843;
+            color: #fbcfe8;
+        }
     </style>
     <script>
         tailwind.config = {
@@ -103,204 +189,242 @@
             theme: {
                 extend: {
                     colors: {
-                        pink: {
+                        primary: {
                             50: '#fdf2f8',
-                            500: '#ff69b4',
+                            100: '#fce7f3',
+                            500: '#ec4899',
                             600: '#db2777',
+                            700: '#be185d',
                         }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Noto Sans SC', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-pink-50 text-stone-800 transition-colors duration-700">
 
-    <!-- 弥散渐变背景 -->
+<body
+    class="text-slate-800 dark:text-slate-200 transition-colors duration-700 antialiased selection:bg-pink-200 selection:text-pink-900">
+
     <div class="mesh-bg">
-        <div class="blob"></div>
+        <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- 导航栏 -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 py-6 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-pink-500 rounded-xl flex items-center justify-center text-white shadow-lg">
-                    <i data-lucide="sparkles"></i>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+            <a href="#" class="group flex items-center gap-2">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white shadow-lg shadow-pink-500/30 group-hover:scale-105 transition-transform duration-300">
+                    <span class="font-bold text-sm">G.</span>
                 </div>
-                <span class="font-black text-xl tracking-tighter">GIRIMI.</span>
-            </div>
-            
+                <span
+                    class="font-bold text-lg tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-500 transition-colors">GIRIMI</span>
+            </a>
+
             <div class="flex items-center gap-6">
-                <a href="#projects" class="hidden md:block font-bold hover:text-pink-500 transition-colors">项目实验室</a>
-                <button id="theme-toggle" class="p-3 rounded-2xl bg-white/40 dark:bg-stone-800/50 backdrop-blur-md transition-colors border border-white/20">
-                    <i id="theme-icon" data-lucide="moon" class="text-pink-600"></i>
+                <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关于</a>
+                    <a href="#projects"
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">精选项目</a>
+                    <a href="#contact"
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">联系</a>
+                </div>
+                <button id="theme-toggle"
+                    class="p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400">
+                    <i data-lucide="moon" class="w-4 h-4"></i>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-48 pb-32 px-6 flex flex-col items-center justify-center text-center">
-        <div class="reveal">
-            <span class="px-4 py-1 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-500 text-sm font-bold mb-4 inline-block">
-                Software Engineering Student
-            </span>
-            <h1 class="text-6xl md:text-8xl font-black mb-6">
-                我是 <span class="bg-gradient-text">GIRIMI</span>
-            </h1>
+    <section id="about" class="min-h-screen flex items-center justify-center pt-24 px-6 relative">
+        <div class="text-center max-w-4xl mx-auto">
+            <div class="reveal">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-8 text-xs font-semibold tracking-wide uppercase text-primary-600 dark:text-pink-400 hover:scale-105 transition-transform cursor-default">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    Available for Collaboration
+                </div>
+
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 leading-tight">
+                    Create with <br class="hidden md:block" />
+                    <span class="text-gradient">Logic & Passion</span>
+                </h1>
+            </div>
+
+            <p class="reveal text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10"
+                style="transition-delay: 0.1s;">
+                你好，我是 <strong class="text-slate-900 dark:text-white">GIRIMI</strong>。
+                <br>
+                一名热衷于构建优雅数字体验的软件工程系学生。在这里，我将创意转化为可交互的代码。
+            </p>
+
+            <div class="reveal flex flex-col md:flex-row gap-4 justify-center items-center"
+                style="transition-delay: 0.2s;">
+                <a href="#projects"
+                    class="px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-sm tracking-wide shadow-xl shadow-slate-900/20 hover:scale-[1.02] active:scale-95 transition-all">
+                    浏览作品
+                </a>
+                <a href="#contact"
+                    class="px-8 py-4 rounded-full glass-panel font-bold text-sm tracking-wide hover:bg-white/80 dark:hover:bg-zinc-800/80 transition-all flex items-center gap-2">
+                    联系我 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
         </div>
 
-        <p class="text-lg md:text-xl max-w-2xl opacity-80 font-medium reveal" style="transition-delay: 0.2s;">
-            这是我的数字实验室，欢迎来到我的 <span class="text-pink-500">girimi.dpdns.org</span>。
-            在这里，我们用代码构建梦想，用粉色点缀逻辑。
-        </p>
-
-        <div class="flex flex-wrap gap-4 mt-10 justify-center reveal" style="transition-delay: 0.4s;">
-            <a href="mailto:your-email@example.com" class="bg-pink-500 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-pink-500/30 transition-all transform hover:-translate-y-1 flex items-center gap-2">
-                <i data-lucide="mail"></i> 魔法来信
-            </a>
-            <button onclick="document.getElementById('projects').scrollIntoView()" class="bg-white/50 dark:bg-stone-800/50 backdrop-blur-md px-8 py-3 rounded-full font-bold border border-white/20 transition-all transform hover:-translate-y-1 flex items-center gap-2">
-                <i data-lucide="code-2"></i> 查看作品
-            </button>
+        <div class="absolute bottom-10 animate-bounce">
+            <i data-lucide="chevrons-down" class="w-6 h-6 text-slate-400 opacity-50"></i>
         </div>
     </section>
 
-    <!-- 项目展示区 -->
-    <main class="max-w-6xl mx-auto px-6 pb-32 space-y-32">
-        
-        <section id="projects" class="reveal">
-            <div class="flex items-center gap-3 mb-10">
-                <div class="p-2 bg-pink-100 dark:bg-pink-900/30 rounded-lg text-pink-500">
-                    <i data-lucide="box"></i>
+    <!-- Projects Section -->
+    <section id="projects" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 reveal">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">精选项目</h2>
+                    <p class="text-slate-500 dark:text-slate-400">Coding, Designing, and Thinking.</p>
                 </div>
-                <h2 class="text-3xl font-black">项目实验室</h2>
+                <a href="https://github.com/kimo3412" target="_blank"
+                    class="text-sm font-semibold text-primary-600 dark:text-primary-400 flex items-center gap-1 hover:gap-2 transition-all">
+                    查看 GitHub <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- 项目卡片 1 -->
-                <div class="group p-8 rounded-[2.5rem] bg-white/40 dark:bg-stone-800/40 backdrop-blur-md border border-white/20 hover:border-pink-300 transition-all hover:shadow-2xl">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="p-3 bg-pink-100 dark:bg-pink-900/40 rounded-2xl text-pink-500 group-hover:scale-110 transition-transform">
-                            <i data-lucide="layout"></i>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project Card 1 -->
+                <div
+                    class="reveal group relative rounded-3xl overflow-hidden glass-panel hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-500 h-[28rem] flex flex-col justify-end p-8 border hover:border-pink-300/50 dark:hover:border-pink-500/30">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/90 dark:to-black/90 z-0">
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="flex gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/50 dark:bg-black/50 backdrop-blur-md text-xs font-medium border border-white/20">Frontend</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/50 dark:bg-black/50 backdrop-blur-md text-xs font-medium border border-white/20">Design</span>
                         </div>
-                        <span class="text-xs font-mono opacity-50">#React #Tailwind</span>
+                        <h3
+                            class="text-2xl font-bold mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                            Portfolio 2024</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2">
+                            您当前浏览的个人主页。采用极简主义设计，注重排版与色彩的和谐，重新定义了个人品牌的数字展示方式。
+                        </p>
+                        <a href="#"
+                            class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-zinc-800 text-slate-900 dark:text-white shadow-lg group-hover:bg-primary-500 group-hover:text-white transition-all transform group-hover:rotate-45">
+                            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                        </a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">魔法小屋 v1.0</h3>
-                    <p class="opacity-70 text-sm leading-relaxed mb-6">
-                        就是你现在看到的这个页面呀！采用了响应式设计、主题切换以及流畅的 CSS 弥散背景效果。
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="reveal glass-panel rounded-3xl p-8 md:p-12 flex flex-col justify-center items-center text-center border-dashed border-2 border-slate-300 dark:border-slate-700 hover:border-primary-400 transition-colors group"
+                    style="transition-delay: 0.1s;">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-zinc-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="code-2" class="w-8 h-8 text-slate-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Project Loading...</h3>
+                    <p class="text-slate-500 dark:text-slate-500 text-sm max-w-xs mx-auto">
+                        更多精彩项目正在构建中。从后端架构到前端交互，我对技术的探索从未停止。
                     </p>
-                    <a href="#" class="flex items-center gap-2 text-pink-500 font-bold group-hover:gap-4 transition-all">
-                        查看详情 <i data-lucide="arrow-right" size="18"></i>
-                    </a>
-                </div>
-
-                <!-- 项目卡片 2 -->
-                <div class="group p-8 rounded-[2.5rem] bg-white/40 dark:bg-stone-800/40 backdrop-blur-md border border-white/20 hover:border-pink-300 transition-all hover:shadow-2xl">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="p-3 bg-rose-100 dark:bg-rose-900/40 rounded-2xl text-rose-500 group-hover:scale-110 transition-transform">
-                            <i data-lucide="database"></i>
-                        </div>
-                        <span class="text-xs font-mono opacity-50">#Python #SQL</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">未来项目预留位</h3>
-                    <p class="opacity-70 text-sm leading-relaxed mb-6">
-                        这里正在等待哥哥放入你的软件工程课设或者个人项目哦！快用代码填满它吧！
-                    </p>
-                    <div class="flex items-center gap-2 text-rose-400 font-bold italic opacity-60">
-                        正在加载中...
-                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 关于与留言 -->
-        <section class="grid md:grid-cols-2 gap-20 items-center reveal">
-            <div class="space-y-6">
-                <h2 class="text-4xl font-black">随时联络</h2>
-                <p class="opacity-80">
-                    无论你是想讨论技术难题，还是单纯想跟本小姐打个招呼，我都随时欢迎哦！
-                </p>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4">
-                        <i data-lucide="map-pin" class="text-pink-500"></i>
-                        <span>数字世界 · 云端角落</span>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <i data-lucide="message-circle" class="text-pink-500"></i>
-                        <span>WeChat: girimi_magic</span>
-                    </div>
-                </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 relative overflow-hidden">
+        <div
+            class="max-w-4xl mx-auto glass-panel rounded-[3rem] p-8 md:p-16 text-center reveal border border-white/40 dark:border-white/10 shadow-2xl shadow-pink-500/5">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Let's Create Together</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-lg mb-10 max-w-xl mx-auto">
+                无论是技术交流、项目合作，还是简单的问候，我都很高兴收到您的来信。
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="mailto:contact@girimi.com"
+                    class="px-8 py-4 rounded-2xl bg-primary-600 text-white font-bold hover:bg-primary-700 transition-all shadow-lg shadow-pink-500/25 flex items-center justify-center gap-2">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    发送邮件
+                </a>
+                <a href="https://github.com/kimo3412" target="_blank"
+                    class="px-8 py-4 rounded-2xl bg-white dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 font-bold hover:bg-slate-50 dark:hover:bg-zinc-700 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                    Github
+                </a>
             </div>
-            <div class="bg-white/60 dark:bg-stone-800/60 backdrop-blur-xl p-10 rounded-[3rem] border border-white/30">
-                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                    <i data-lucide="send" size="20" class="text-pink-500"></i> 发送魔法讯息
-                </h3>
-                <form class="space-y-4" onsubmit="event.preventDefault(); alert('本小姐收到啦！✨（这只是个演示哦）')">
-                    <input type="text" placeholder="你的名字" class="w-full bg-white/50 dark:bg-stone-900/50 p-4 rounded-2xl border border-pink-100 focus:border-pink-500 outline-none transition-all">
-                    <textarea placeholder="想说的话..." rows="4" class="w-full bg-white/50 dark:bg-stone-900/50 p-4 rounded-2xl border border-pink-100 focus:border-pink-500 outline-none transition-all"></textarea>
-                    <button type="submit" class="w-full bg-pink-500 text-white font-bold py-4 rounded-2xl hover:bg-pink-600 transition-all shadow-lg shadow-pink-500/20">
-                        立即发射
-                    </button>
-                </form>
-            </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
-
-    <footer class="py-12 text-center opacity-40 text-sm font-mono tracking-widest uppercase">
-        <p>2024 © GIRIMI.DPDNS.ORG · NO CANVAS EDITION</p>
+    <!-- Footer -->
+    <footer class="py-8 text-center text-slate-400 dark:text-slate-600 text-xs font-mono">
+        <p>&copy; 2025 GIRIMI. DESIGNED & CODED WITH PASSION.</p>
     </footer>
 
     <script>
-        // 初始化 Lucide 图标
+        // Icons
         lucide.createIcons();
 
-        // 主题切换逻辑
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark');
-            const isDark = body.classList.contains('dark');
-            
-            if (isDark) {
-                body.classList.replace('bg-pink-50', 'bg-stone-900');
-                body.classList.replace('text-stone-800', 'text-pink-50');
-                themeIcon.setAttribute('data-lucide', 'sun');
-                themeIcon.classList.replace('text-pink-600', 'text-yellow-400');
-            } else {
-                body.classList.replace('bg-stone-900', 'bg-pink-50');
-                body.classList.replace('text-pink-50', 'text-stone-800');
-                themeIcon.setAttribute('data-lucide', 'moon');
-                themeIcon.classList.replace('text-yellow-400', 'text-pink-600');
-            }
-            lucide.createIcons();
-        });
-
-        // 导航栏滚动透明度变化
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('bg-white/70', 'dark:bg-stone-900/70', 'backdrop-blur-md', 'py-4', 'shadow-sm');
-                nav.classList.remove('py-6');
-            } else {
-                nav.classList.remove('bg-white/70', 'dark:bg-stone-900/70', 'backdrop-blur-md', 'py-4', 'shadow-sm');
-                nav.classList.add('py-6');
-            }
-        });
-
-        // 滚动显现逻辑
+        // Reveal Animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-glass', 'shadow-sm');
+                nav.classList.remove('py-6');
+                nav.classList.add('py-4');
+            } else {
+                nav.classList.remove('nav-glass', 'shadow-sm');
+                nav.classList.add('py-6');
+                nav.classList.remove('py-4');
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Initial Icon Set
+        function updateThemeIcon(isDark) {
+            themeToggle.innerHTML = isDark
+                ? '<i data-lucide="sun" class="w-4 h-4"></i>'
+                : '<i data-lucide="moon" class="w-4 h-4"></i>';
+            lucide.createIcons();
+        }
+
+        // Check system preference
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+            updateThemeIcon(true);
+        } else {
+            updateThemeIcon(false);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            updateThemeIcon(isDark);
+        });
     </script>
 </body>
+
 </html>
