@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIRIMI の 魔法小屋 ✨</title>
+    
+    <!-- SEO 魔法标签 -->
+    <meta name="description" content="GIRIMI 的个人魔法小屋，展示代码与创意。">
+    <meta property="og:title" content="GIRIMI の 魔法小屋 ✨">
+    <meta property="og:description" content="欢迎来到本小姐精心打造的数字乐园！">
+    <meta property="og:image" content="https://raw.githubusercontent.com/lucide-react/lucide/main/icons/heart.svg">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* 纯 CSS 弥散背景动效 - 代替 Canvas */
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #fff;
+            overflow: hidden;
+            transition: background 0.7s ease;
+        }
+
+        .dark .mesh-bg {
+            background: #1c1917;
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 105, 180, 0.2);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: move 20s infinite alternate;
+        }
+
+        .blob-2 {
+            background: rgba(251, 113, 133, 0.15);
+            width: 600px;
+            height: 600px;
+            right: -100px;
+            top: -100px;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            background: rgba(219, 39, 119, 0.1);
+            left: -100px;
+            bottom: -100px;
+            animation-delay: -10s;
+        }
+
+        @keyframes move {
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(100px, 100px) rotate(360deg); }
+        }
+
+        .bg-gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #ec4899, #f43f5e, #db2777);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 隐藏滚动条 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #ffb6c1; border-radius: 10px; }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        pink: {
+                            50: '#fdf2f8',
+                            500: '#ff69b4',
+                            600: '#db2777',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-pink-50 text-stone-800 transition-colors duration-700">
+
+    <!-- 弥散渐变背景 -->
+    <div class="mesh-bg">
+        <div class="blob"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 py-6 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-pink-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                    <i data-lucide="sparkles"></i>
+                </div>
+                <span class="font-black text-xl tracking-tighter">GIRIMI.</span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <a href="#projects" class="hidden md:block font-bold hover:text-pink-500 transition-colors">项目实验室</a>
+                <button id="theme-toggle" class="p-3 rounded-2xl bg-white/40 dark:bg-stone-800/50 backdrop-blur-md transition-colors border border-white/20">
+                    <i id="theme-icon" data-lucide="moon" class="text-pink-600"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-48 pb-32 px-6 flex flex-col items-center justify-center text-center">
+        <div class="reveal">
+            <span class="px-4 py-1 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-500 text-sm font-bold mb-4 inline-block">
+                Software Engineering Student
+            </span>
+            <h1 class="text-6xl md:text-8xl font-black mb-6">
+                我是 <span class="bg-gradient-text">GIRIMI</span>
+            </h1>
+        </div>
+
+        <p class="text-lg md:text-xl max-w-2xl opacity-80 font-medium reveal" style="transition-delay: 0.2s;">
+            这是我的数字实验室，欢迎来到我的 <span class="text-pink-500">girimi.dpdns.org</span>。
+            在这里，我们用代码构建梦想，用粉色点缀逻辑。
+        </p>
+
+        <div class="flex flex-wrap gap-4 mt-10 justify-center reveal" style="transition-delay: 0.4s;">
+            <a href="mailto:your-email@example.com" class="bg-pink-500 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-pink-500/30 transition-all transform hover:-translate-y-1 flex items-center gap-2">
+                <i data-lucide="mail"></i> 魔法来信
+            </a>
+            <button onclick="document.getElementById('projects').scrollIntoView()" class="bg-white/50 dark:bg-stone-800/50 backdrop-blur-md px-8 py-3 rounded-full font-bold border border-white/20 transition-all transform hover:-translate-y-1 flex items-center gap-2">
+                <i data-lucide="code-2"></i> 查看作品
+            </button>
+        </div>
+    </section>
+
+    <!-- 项目展示区 -->
+    <main class="max-w-6xl mx-auto px-6 pb-32 space-y-32">
+        
+        <section id="projects" class="reveal">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="p-2 bg-pink-100 dark:bg-pink-900/30 rounded-lg text-pink-500">
+                    <i data-lucide="box"></i>
+                </div>
+                <h2 class="text-3xl font-black">项目实验室</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 项目卡片 1 -->
+                <div class="group p-8 rounded-[2.5rem] bg-white/40 dark:bg-stone-800/40 backdrop-blur-md border border-white/20 hover:border-pink-300 transition-all hover:shadow-2xl">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-3 bg-pink-100 dark:bg-pink-900/40 rounded-2xl text-pink-500 group-hover:scale-110 transition-transform">
+                            <i data-lucide="layout"></i>
+                        </div>
+                        <span class="text-xs font-mono opacity-50">#React #Tailwind</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">魔法小屋 v1.0</h3>
+                    <p class="opacity-70 text-sm leading-relaxed mb-6">
+                        就是你现在看到的这个页面呀！采用了响应式设计、主题切换以及流畅的 CSS 弥散背景效果。
+                    </p>
+                    <a href="#" class="flex items-center gap-2 text-pink-500 font-bold group-hover:gap-4 transition-all">
+                        查看详情 <i data-lucide="arrow-right" size="18"></i>
+                    </a>
+                </div>
+
+                <!-- 项目卡片 2 -->
+                <div class="group p-8 rounded-[2.5rem] bg-white/40 dark:bg-stone-800/40 backdrop-blur-md border border-white/20 hover:border-pink-300 transition-all hover:shadow-2xl">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-3 bg-rose-100 dark:bg-rose-900/40 rounded-2xl text-rose-500 group-hover:scale-110 transition-transform">
+                            <i data-lucide="database"></i>
+                        </div>
+                        <span class="text-xs font-mono opacity-50">#Python #SQL</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">未来项目预留位</h3>
+                    <p class="opacity-70 text-sm leading-relaxed mb-6">
+                        这里正在等待哥哥放入你的软件工程课设或者个人项目哦！快用代码填满它吧！
+                    </p>
+                    <div class="flex items-center gap-2 text-rose-400 font-bold italic opacity-60">
+                        正在加载中...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于与留言 -->
+        <section class="grid md:grid-cols-2 gap-20 items-center reveal">
+            <div class="space-y-6">
+                <h2 class="text-4xl font-black">随时联络</h2>
+                <p class="opacity-80">
+                    无论你是想讨论技术难题，还是单纯想跟本小姐打个招呼，我都随时欢迎哦！
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="map-pin" class="text-pink-500"></i>
+                        <span>数字世界 · 云端角落</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="message-circle" class="text-pink-500"></i>
+                        <span>WeChat: girimi_magic</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white/60 dark:bg-stone-800/60 backdrop-blur-xl p-10 rounded-[3rem] border border-white/30">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="send" size="20" class="text-pink-500"></i> 发送魔法讯息
+                </h3>
+                <form class="space-y-4" onsubmit="event.preventDefault(); alert('本小姐收到啦！✨（这只是个演示哦）')">
+                    <input type="text" placeholder="你的名字" class="w-full bg-white/50 dark:bg-stone-900/50 p-4 rounded-2xl border border-pink-100 focus:border-pink-500 outline-none transition-all">
+                    <textarea placeholder="想说的话..." rows="4" class="w-full bg-white/50 dark:bg-stone-900/50 p-4 rounded-2xl border border-pink-100 focus:border-pink-500 outline-none transition-all"></textarea>
+                    <button type="submit" class="w-full bg-pink-500 text-white font-bold py-4 rounded-2xl hover:bg-pink-600 transition-all shadow-lg shadow-pink-500/20">
+                        立即发射
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 text-center opacity-40 text-sm font-mono tracking-widest uppercase">
+        <p>2024 © GIRIMI.DPDNS.ORG · NO CANVAS EDITION</p>
+    </footer>
+
+    <script>
+        // 初始化 Lucide 图标
+        lucide.createIcons();
+
+        // 主题切换逻辑
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            const isDark = body.classList.contains('dark');
+            
+            if (isDark) {
+                body.classList.replace('bg-pink-50', 'bg-stone-900');
+                body.classList.replace('text-stone-800', 'text-pink-50');
+                themeIcon.setAttribute('data-lucide', 'sun');
+                themeIcon.classList.replace('text-pink-600', 'text-yellow-400');
+            } else {
+                body.classList.replace('bg-stone-900', 'bg-pink-50');
+                body.classList.replace('text-pink-50', 'text-stone-800');
+                themeIcon.setAttribute('data-lucide', 'moon');
+                themeIcon.classList.replace('text-yellow-400', 'text-pink-600');
+            }
+            lucide.createIcons();
+        });
+
+        // 导航栏滚动透明度变化
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/70', 'dark:bg-stone-900/70', 'backdrop-blur-md', 'py-4', 'shadow-sm');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('bg-white/70', 'dark:bg-stone-900/70', 'backdrop-blur-md', 'py-4', 'shadow-sm');
+                nav.classList.add('py-6');
+            }
+        });
+
+        // 滚动显现逻辑
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
