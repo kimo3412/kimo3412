@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | GIRIMI</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="GIRIMI's Blog - Thoughts on code, design, and life.">
+    <meta property="og:title" content="Blog | GIRIMI">
+    <meta property="og:description" content="Thoughts on code, design, and life.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf2f8', 100: '#fce7f3', 500: '#ec4899', 600: '#db2777', 700: '#be185d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+
+<body class="text-slate-800 dark:text-slate-200 transition-colors duration-700 antialiased">
+
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-core"></div>
+    <div class="cursor-aura"></div>
+
+    <!-- Mesh Background -->
+    <div class="mesh-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+            <a href="../index.html" class="magnetic group flex items-center gap-2">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white shadow-lg shadow-pink-500/30 group-hover:scale-105 transition-transform duration-300">
+                    <span class="font-bold text-sm">G.</span>
+                </div>
+                <span
+                    class="font-bold text-lg tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-500 transition-colors">GIRIMI</span>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <a href="../index.html"
+                    class="magnetic text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">首页</a>
+                <a href="../links.html"
+                    class="magnetic text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Links</a>
+                <button id="theme-toggle"
+                    class="magnetic p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400">
+                    <i data-lucide="moon" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Content -->
+    <main class="page-content px-6">
+        <div class="max-w-4xl mx-auto py-16">
+
+            <!-- Header -->
+            <header class="mb-16 reveal">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
+                <p class="text-lg text-slate-500 dark:text-slate-400">
+                    关于代码、设计与生活的思考
+                </p>
+            </header>
+
+            <!-- Blog Posts List -->
+            <section class="space-y-6">
+
+                <!-- Post Card 1 -->
+                <a href="hello-world.html"
+                    class="magnetic reveal block glass-panel rounded-3xl p-8 hover:shadow-xl hover:shadow-pink-500/5 transition-all group">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <p class="text-xs text-slate-400 mb-2 font-mono">2025-01-06</p>
+                            <h2
+                                class="text-xl font-bold mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                                Hello World - 我的第一篇博客
+                            </h2>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2">
+                                欢迎来到我的博客！这是我的第一篇文章，在这里我将分享我在编程和设计方面的学习心得...
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-2 text-primary-500 font-semibold text-sm shrink-0">
+                            阅读 <i data-lucide="arrow-right"
+                                class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Placeholder for future posts -->
+                <div class="reveal text-center py-12 glass-panel rounded-3xl border-dashed border-2 border-slate-200 dark:border-slate-700"
+                    style="transition-delay: 0.1s;">
+                    <i data-lucide="pen-tool" class="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto mb-4"></i>
+                    <p class="text-slate-400 dark:text-slate-500">更多文章即将上线...</p>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-slate-400 dark:text-slate-600 text-xs font-mono">
+        <p>&copy; 2025 GIRIMI. DESIGNED & CODED WITH PASSION.</p>
+    </footer>
+
+    <!-- Shared JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

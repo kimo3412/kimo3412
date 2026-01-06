@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | GIRIMI</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf2f8', 100: '#fce7f3', 500: '#ec4899', 600: '#db2777', 700: '#be185d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+
+<body class="text-slate-800 dark:text-slate-200 transition-colors duration-700 antialiased">
+
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-core"></div>
+    <div class="cursor-aura"></div>
+
+    <!-- Mesh Background -->
+    <div class="mesh-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+
+        <div class="reveal">
+            <!-- 404 Number -->
+            <h1 class="text-[10rem] md:text-[14rem] font-black leading-none text-gradient opacity-80">
+                404
+            </h1>
+
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 -mt-6">页面走丢了</h2>
+
+            <p class="text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-10">
+                你访问的页面不存在。它可能已被移动、删除，或者你输入了错误的地址。
+            </p>
+
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="index.html"
+                    class="magnetic px-8 py-4 rounded-full bg-primary-600 text-white font-bold hover:bg-primary-700 transition-all shadow-lg shadow-pink-500/25 flex items-center gap-2">
+                    <i data-lucide="home" class="w-5 h-5"></i>
+                    返回首页
+                </a>
+                <a href="links.html"
+                    class="magnetic px-8 py-4 rounded-full bg-white dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 font-bold hover:bg-slate-50 dark:hover:bg-zinc-700 transition-all flex items-center gap-2">
+                    <i data-lucide="link" class="w-5 h-5"></i>
+                    所有链接
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Shared JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

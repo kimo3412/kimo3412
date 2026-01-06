@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World - 我的第一篇博客 | GIRIMI Blog</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="欢迎来到我的博客！这是我的第一篇文章。">
+    <meta property="og:title" content="Hello World - 我的第一篇博客">
+    <meta property="og:description" content="欢迎来到我的博客！这是我的第一篇文章。">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf2f8', 100: '#fce7f3', 500: '#ec4899', 600: '#db2777', 700: '#be185d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+
+<body class="text-slate-800 dark:text-slate-200 transition-colors duration-700 antialiased">
+
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-core"></div>
+    <div class="cursor-aura"></div>
+
+    <!-- Mesh Background -->
+    <div class="mesh-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+            <a href="../index.html" class="magnetic group flex items-center gap-2">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white shadow-lg shadow-pink-500/30 group-hover:scale-105 transition-transform duration-300">
+                    <span class="font-bold text-sm">G.</span>
+                </div>
+                <span
+                    class="font-bold text-lg tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-500 transition-colors">GIRIMI</span>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <a href="index.html"
+                    class="magnetic text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    返回博客
+                </a>
+                <button id="theme-toggle"
+                    class="magnetic p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400">
+                    <i data-lucide="moon" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <main class="page-content px-6">
+        <article class="max-w-3xl mx-auto py-16">
+
+            <!-- Header -->
+            <header class="mb-12 reveal">
+                <p class="text-sm text-primary-500 font-semibold mb-4 font-mono">2025-01-06</p>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                    Hello World - 我的第一篇博客
+                </h1>
+                <p class="text-lg text-slate-500 dark:text-slate-400">
+                    欢迎来到我的数字花园。
+                </p>
+            </header>
+
+            <!-- Content -->
+            <div class="blog-post-content reveal text-slate-700 dark:text-slate-300" style="transition-delay: 0.1s;">
+
+                <p>
+                    你好，欢迎来到我的博客！我是 GIRIMI，一名正在学习软件工程的学生。这是我的第一篇博客文章，标志着我正式开始记录我的编程和设计之旅。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">为什么要写博客？</h2>
+
+                <p>
+                    我一直相信，<strong>教是最好的学</strong>。当你试图向别人解释一个概念时，你会发现自己是否真正理解了它。写博客就是一种"教"的方式，它迫使我把模糊的想法整理成清晰的文字。
+                </p>
+
+                <p>
+                    此外，博客也是一个<code>时间胶囊</code>。多年后回看，我可以追溯自己的成长轨迹，看到自己曾经犯过的错误和取得的进步。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">关于这个网站</h2>
+
+                <p>
+                    这个网站是我从零开始搭建的，没有使用任何网站构建器。它采用了以下技术栈：
+                </p>
+
+                <ul class="list-disc list-inside space-y-2 my-6">
+                    <li><strong>HTML5</strong> — 语义化结构</li>
+                    <li><strong>Tailwind CSS</strong> — 原子化样式</li>
+                    <li><strong>GSAP</strong> — 流畅动画</li>
+                    <li><strong>Cloudflare Pages</strong> — 静态托管</li>
+                </ul>
+
+                <p>
+                    我特别喜欢这个网站的<span class="text-primary-500 font-semibold">磁力光标效果</span>和<span
+                        class="text-primary-500 font-semibold">流体背景</span>。它们让页面具有一种"活着"的感觉，这正是我追求的设计目标。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">下一步计划</h2>
+
+                <p>
+                    在接下来的日子里，我打算在这里分享：
+                </p>
+
+                <ul class="list-disc list-inside space-y-2 my-6">
+                    <li>学习编程过程中的心得和技巧</li>
+                    <li>项目开发的幕后故事</li>
+                    <li>设计灵感和审美思考</li>
+                    <li>偶尔的生活感悟</li>
+                </ul>
+
+                <p>
+                    如果你对这些话题感兴趣，欢迎常来逛逛。你也可以通过 <a href="mailto:shanrzkimo@outlook.com"
+                        class="text-primary-500 hover:underline">邮件</a> 或 <a href="https://github.com/kimo3412"
+                        target="_blank" class="text-primary-500 hover:underline">GitHub</a> 与我联系。
+                </p>
+
+                <p>
+                    感谢阅读，我们下篇文章见！✨
+                </p>
+
+            </div>
+
+            <!-- Back Link -->
+            <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 reveal"
+                style="transition-delay: 0.2s;">
+                <a href="index.html"
+                    class="magnetic inline-flex items-center gap-2 text-sm font-semibold text-primary-500 hover:gap-3 transition-all">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    返回博客列表
+                </a>
+            </div>
+
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-slate-400 dark:text-slate-600 text-xs font-mono">
+        <p>&copy; 2025 GIRIMI. DESIGNED & CODED WITH PASSION.</p>
+    </footer>
+
+    <!-- Shared JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

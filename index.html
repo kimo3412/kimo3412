@@ -13,210 +13,6 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Fonts: Plus Jakarta Sans for a modern tech feel -->
-    <link rel="preconnect"
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- GSAP for Smooth Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
-
-        body {
-            font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
-            overflow-x: hidden;
-            /* cursor: none; Removed for safety - managed by JS */
-        }
-
-        /* Custom Cursor */
-        .cursor-core,
-        .cursor-aura {
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-            /* Hidden on touch devices via JS */
-        }
-
-        .cursor-core {
-            width: 8px;
-            height: 8px;
-            background-color: #ec4899;
-            /* Pink 500 */
-            transition: width 0.2s, height 0.2s;
-        }
-
-        .dark .cursor-core {
-            background-color: #fff;
-        }
-
-        .cursor-aura {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(236, 72, 153, 0.5);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-        }
-
-        .dark .cursor-aura {
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Magnetic Hover State */
-        body.hovering .cursor-core {
-            opacity: 0;
-            /* Hide core on hover if preferred, or keep it */
-        }
-
-        body.hovering .cursor-aura {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(236, 72, 153, 0.1);
-            border-color: transparent;
-        }
-
-        .dark body.hovering .cursor-aura {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Sophisticated Mesh Gradient */
-        .mesh-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            background: #FAFAFA;
-            /* Light mode base */
-            transition: background 0.7s ease;
-        }
-
-        .dark .mesh-bg {
-            background: #09090b;
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.6;
-        }
-
-        /* Premium Pink/Rose/Purple gradients */
-        .blob-1 {
-            width: 60vw;
-            height: 60vw;
-            background: #fbcfe8;
-            top: -10%;
-            left: -10%;
-        }
-
-        .dark .blob-1 {
-            background: #831843;
-        }
-
-        .blob-2 {
-            width: 50vw;
-            height: 50vw;
-            background: #f5d0fe;
-            bottom: -10%;
-            right: -10%;
-        }
-
-        .dark .blob-2 {
-            background: #4c0519;
-        }
-
-        .blob-3 {
-            width: 40vw;
-            height: 40vw;
-            background: #ffe4e6;
-            top: 40%;
-            left: 40%;
-        }
-
-        .dark .blob-3 {
-            background: #701a75;
-        }
-
-        /* Typography & Effects */
-        .text-gradient {
-            background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .dark .text-gradient {
-            background: linear-gradient(135deg, #f472b6 0%, #e879f9 50%, #fb7185 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-        }
-
-        .dark .glass-panel {
-            background: rgba(24, 24, 27, 0.6);
-            /* Zinc 900 opacity */
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-glass {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .dark .nav-glass {
-            background: rgba(9, 9, 11, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Custom Selection Color */
-        ::selection {
-            background: #fbcfe8;
-            color: #831843;
-        }
-
-        .dark ::selection {
-            background: #831843;
-            color: #fbcfe8;
-        }
-
-        /* Magnetic Elements */
-        .magnetic {
-            display: inline-block;
-            will-change: transform;
-        }
-    </style>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -234,6 +30,15 @@
             }
         }
     </script>
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 
 <body
@@ -267,8 +72,10 @@
                         class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors magnetic">关于</a>
                     <a href="#projects"
                         class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors magnetic">精选项目</a>
-                    <a href="#contact"
-                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors magnetic">联系</a>
+                    <a href="blog/index.html"
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors magnetic">博客</a>
+                    <a href="links.html"
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors magnetic">Links</a>
                 </div>
                 <button id="theme-toggle"
                     class="p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400 magnetic">
@@ -405,135 +212,8 @@
         <p>&copy; 2025 GIRIMI. DESIGNED & CODED WITH PASSION.</p>
     </footer>
 
-    <script>
-        lucide.createIcons();
-
-        // 1. Initial Animations (Scroll Reveal)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // 2. Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const html = document.documentElement;
-
-        function updateThemeIcon(isDark) {
-            themeToggle.innerHTML = isDark
-                ? '<i data-lucide="sun" class="w-4 h-4"></i>'
-                : '<i data-lucide="moon" class="w-4 h-4"></i>';
-            lucide.createIcons();
-        }
-
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            html.classList.add('dark');
-            updateThemeIcon(true);
-        } else {
-            updateThemeIcon(false);
-        }
-
-        themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            const isDark = html.classList.contains('dark');
-            updateThemeIcon(isDark);
-        });
-
-        // 3. GSAP ANIMATION SYSTEM
-
-        // Setup
-        const cursorCore = document.querySelector('.cursor-core');
-        const cursorAura = document.querySelector('.cursor-aura');
-
-        // Only enable custom cursor on non-touch devices
-        if (window.matchMedia("(pointer: fine)").matches) {
-            cursorCore.style.display = 'block';
-            cursorAura.style.display = 'block';
-
-            // Cursor Follow Logic
-            document.body.style.cursor = 'none'; // Only hide default cursor if custom one works
-            gsap.set(cursorCore, { xPercent: -50, yPercent: -50 });
-            gsap.set(cursorAura, { xPercent: -50, yPercent: -50 });
-
-            const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-            const mouse = { x: pos.x, y: pos.y };
-            const speed = 0.15; // Aura delay factor
-
-            window.addEventListener("mousemove", e => {
-                mouse.x = e.clientX;
-                mouse.y = e.clientY;
-
-                // Core follows instantly
-                gsap.to(cursorCore, { x: mouse.x, y: mouse.y, duration: 0 });
-            });
-
-            // Ticker for smooth aura movement
-            gsap.ticker.add(() => {
-                const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
-                pos.x += (mouse.x - pos.x) * dt;
-                pos.y += (mouse.y - pos.y) * dt;
-                gsap.set(cursorAura, { x: pos.x, y: pos.y });
-            });
-        }
-
-        // 4. Magnetic Buttons Effect (Works for all devices)
-        const magnetics = document.querySelectorAll('.magnetic');
-        magnetics.forEach((el) => {
-            el.addEventListener('mouseenter', () => {
-                document.body.classList.add('hovering');
-            });
-
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                // Pull button towards mouse (increased strength)
-                gsap.to(el, {
-                    x: x * 0.4,
-                    y: y * 0.4,
-                    duration: 0.4,
-                    ease: 'power3.out'
-                });
-            });
-
-            el.addEventListener('mouseleave', () => {
-                gsap.to(el, {
-                    x: 0,
-                    y: 0,
-                    duration: 0.7,
-                    ease: 'elastic.out(1, 0.3)'
-                });
-                document.body.classList.remove('hovering');
-            });
-        });
-
-        // 5. Background Blobs Breathing
-        gsap.to('.blob', {
-            y: "random(-50, 50)",
-            x: "random(-50, 50)",
-            scale: "random(0.9, 1.1)",
-            duration: "random(5, 10)",
-            ease: "sine.inOut",
-            repeat: -1,
-            yoyo: true,
-            stagger: 1
-        });
-
-        // 5. Navbar Glass Effect on Scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('nav-glass', 'shadow-sm', 'py-4');
-                nav.classList.remove('py-6');
-            } else {
-                nav.classList.remove('nav-glass', 'shadow-sm', 'py-4');
-                nav.classList.add('py-6');
-            }
-        });
-    </script>
+    <!-- Shared JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
