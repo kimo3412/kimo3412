@@ -25,7 +25,7 @@ function initScrollReveal() {
 function initThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     if (!themeToggle) return;
-    
+
     const html = document.documentElement;
 
     function updateThemeIcon(isDark) {
@@ -56,7 +56,7 @@ function initThemeToggle() {
 function initCustomCursor() {
     const cursorCore = document.querySelector('.cursor-core');
     const cursorAura = document.querySelector('.cursor-aura');
-    
+
     if (!cursorCore || !cursorAura) return;
 
     // Only enable custom cursor on non-touch devices
@@ -88,51 +88,43 @@ function initCustomCursor() {
 }
 
 // ===== MAGNETIC EFFECT =====
+// Disabled per user request
 function initMagneticEffect() {
-    const magnetics = document.querySelectorAll('.magnetic');
-    magnetics.forEach((el) => {
-        el.addEventListener('mouseenter', () => {
-            document.body.classList.add('hovering');
-        });
-
-        el.addEventListener('mousemove', (e) => {
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-
-            gsap.to(el, {
-                x: x * 0.4,
-                y: y * 0.4,
-                duration: 0.4,
-                ease: 'power3.out'
-            });
-        });
-
-        el.addEventListener('mouseleave', () => {
-            gsap.to(el, {
-                x: 0,
-                y: 0,
-                duration: 0.7,
-                ease: 'elastic.out(1, 0.3)'
-            });
-            document.body.classList.remove('hovering');
-        });
-    });
+    return; // Magnetic effect disabled
 }
 
-// ===== BLOB ANIMATION =====
+// ===== BLOB ANIMATION (FLUID BACKGROUND) =====
 function initBlobAnimation() {
     if (typeof gsap === 'undefined') return;
-    
-    gsap.to('.blob', {
-        y: "random(-50, 50)",
-        x: "random(-50, 50)",
-        scale: "random(0.9, 1.1)",
-        duration: "random(5, 10)",
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        stagger: 1
+
+    const blobs = document.querySelectorAll('.blob');
+
+    blobs.forEach((blob, index) => {
+        // Each blob has unique animation parameters
+        const duration = 8 + index * 4;
+        const delay = index * 0.8;
+
+        // Primary fluid motion
+        gsap.to(blob, {
+            x: `random(-120, 120)`,
+            y: `random(-120, 120)`,
+            scale: `random(0.7, 1.3)`,
+            duration: duration,
+            delay: delay,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true,
+        });
+
+        // Secondary layer for organic morphing
+        gsap.to(blob, {
+            opacity: 0.4 + index * 0.1,
+            duration: duration * 1.5,
+            delay: delay + 2,
+            ease: "power1.inOut",
+            repeat: -1,
+            yoyo: true,
+        });
     });
 }
 
@@ -140,7 +132,7 @@ function initBlobAnimation() {
 function initNavbarScroll() {
     const nav = document.getElementById('navbar');
     if (!nav) return;
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             nav.classList.add('nav-glass', 'shadow-sm', 'py-4');
