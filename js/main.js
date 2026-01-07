@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     initScrollReveal();
     initThemeToggle();
+    initMobileMenu();
     initCustomCursor();
     initMagneticEffect();
     initBlobAnimation();
@@ -52,39 +53,41 @@ function initThemeToggle() {
     });
 }
 
+// ===== MOBILE MENU =====
+function initMobileMenu() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    if (!menuBtn || !menu) return;
+
+    menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+
+        // 切换图标
+        const icon = menuBtn.querySelector('i');
+        if (menu.classList.contains('hidden')) {
+            icon.setAttribute('data-lucide', 'menu');
+        } else {
+            icon.setAttribute('data-lucide', 'x');
+        }
+        lucide.createIcons();
+    });
+
+    // 点击菜单链接后关闭菜单
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.add('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.setAttribute('data-lucide', 'menu');
+            lucide.createIcons();
+        });
+    });
+}
+
 // ===== CUSTOM CURSOR =====
+// Disabled - using default browser cursor
 function initCustomCursor() {
-    const cursorCore = document.querySelector('.cursor-core');
-    const cursorAura = document.querySelector('.cursor-aura');
-
-    if (!cursorCore || !cursorAura) return;
-
-    // Only enable custom cursor on non-touch devices
-    if (window.matchMedia("(pointer: fine)").matches) {
-        cursorCore.style.display = 'block';
-        cursorAura.style.display = 'block';
-        document.body.style.cursor = 'none';
-
-        gsap.set(cursorCore, { xPercent: -50, yPercent: -50 });
-        gsap.set(cursorAura, { xPercent: -50, yPercent: -50 });
-
-        const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-        const mouse = { x: pos.x, y: pos.y };
-        const speed = 0.15;
-
-        window.addEventListener("mousemove", e => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-            gsap.to(cursorCore, { x: mouse.x, y: mouse.y, duration: 0 });
-        });
-
-        gsap.ticker.add(() => {
-            const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
-            pos.x += (mouse.x - pos.x) * dt;
-            pos.y += (mouse.y - pos.y) * dt;
-            gsap.set(cursorAura, { x: pos.x, y: pos.y });
-        });
-    }
+    return;
 }
 
 // ===== MAGNETIC EFFECT =====

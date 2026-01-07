@@ -66,21 +66,44 @@
                     class="font-bold text-lg tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-500 transition-colors">GIRIMI</span>
             </a>
 
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-4">
+                <!-- Desktop Navigation -->
                 <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600 dark:text-slate-400">
-                    <a href="#about"
-                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors magnetic">关于</a>
+                    <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关于</a>
                     <a href="#projects"
-                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors magnetic">精选项目</a>
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">精选项目</a>
                     <a href="blog/index.html"
-                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors magnetic">博客</a>
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">博客</a>
                     <a href="links.html"
-                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors magnetic">Links</a>
+                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Links</a>
                 </div>
+
+                <!-- Theme Toggle -->
                 <button id="theme-toggle"
-                    class="p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400 magnetic">
+                    class="p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400">
                     <i data-lucide="moon" class="w-4 h-4"></i>
                 </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 text-slate-500 dark:text-slate-400">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 right-0 glass-panel border-t border-slate-200 dark:border-slate-800">
+            <div class="flex flex-col p-6 space-y-4 text-center font-medium">
+                <a href="#about"
+                    class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关于</a>
+                <a href="#projects"
+                    class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">精选项目</a>
+                <a href="blog/index.html"
+                    class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">博客</a>
+                <a href="links.html"
+                    class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Links</a>
             </div>
         </div>
     </nav>

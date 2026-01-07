@@ -7,52 +7,22 @@ body {
     overflow-x: hidden;
 }
 
-/* ===== CUSTOM CURSOR ===== */
-.cursor-core,
-.cursor-aura {
+/* ===== CUSTOM GIF CURSOR ===== */
+.cursor-gif {
     position: fixed;
     pointer-events: none;
     z-index: 10000;
-    border-radius: 50%;
+    width: 32px;
+    /* 调整这里改变光标大小 */
+    height: 32px;
     transform: translate(-50%, -50%);
     display: none;
 }
 
-.cursor-core {
-    width: 8px;
-    height: 8px;
-    background-color: #ec4899;
-    transition: width 0.2s, height 0.2s;
-}
-
-.dark .cursor-core {
-    background-color: #fff;
-}
-
+/* 隐藏旧的光标元素 */
+.cursor-core,
 .cursor-aura {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(236, 72, 153, 0.5);
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
-}
-
-.dark .cursor-aura {
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-body.hovering .cursor-core {
-    opacity: 0;
-}
-
-body.hovering .cursor-aura {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(236, 72, 153, 0.1);
-    border-color: transparent;
-}
-
-.dark body.hovering .cursor-aura {
-    background-color: rgba(255, 255, 255, 0.1);
+    display: none !important;
 }
 
 /* ===== MESH BACKGROUND ===== */

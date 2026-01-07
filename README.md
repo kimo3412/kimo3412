@@ -104,7 +104,41 @@ kimo3412/
 
 ---
 
-## 🎨 如何添加新项目
+## 🖼️ 如何在博客中添加图片
+
+### 图片存放位置
+
+将图片放入 `assets/images/` 文件夹：
+
+```
+kimo3412/
+├── assets/
+│   └── images/
+│       ├── my-photo.jpg
+│       └── screenshot.png
+└── blog/
+    └── hello-world.html
+```
+
+### 在博客中使用图片
+
+在文章的 `<div class="blog-post-content">` 内添加：
+
+```html
+<!-- 基础图片 -->
+<img src="../assets/images/图片名.jpg" alt="图片描述" class="rounded-2xl my-8 w-full">
+
+<!-- 带标题的图片 -->
+<figure class="my-8">
+    <img src="../assets/images/图片名.jpg" alt="图片描述" class="rounded-2xl w-full">
+    <figcaption class="text-center text-sm text-slate-400 mt-3">图片说明文字</figcaption>
+</figure>
+
+<!-- 居中小图 -->
+<img src="../assets/images/图片名.jpg" alt="描述" class="rounded-2xl my-8 mx-auto max-w-md">
+```
+
+> **注意**: 博客文章在 `blog/` 文件夹内，所以路径要用 `../assets/images/`
 
 ### 步骤 1: 创建项目文件
 
