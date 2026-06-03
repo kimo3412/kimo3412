@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 版个人主页，差点把自己网线拔了 | GIRIMI Blog</title>
+
+    <meta name="description" content="从 1.0 到 3.0 的复盘，每一版都在解决上一版的什么问题。">
+    <meta property="og:title" content="3 版个人主页，差点把自己网线拔了">
+    <meta property="og:description" content="从 1.0 到 3.0 的复盘。">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf2f8', 100: '#fce7f3', 500: '#ec4899', 600: '#db2777', 700: '#be185d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+
+<body class="text-slate-800 dark:text-slate-200 transition-colors duration-700 antialiased">
+
+    <div class="mesh-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+            <a href="../index.html" class="magnetic group flex items-center gap-2">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white shadow-lg shadow-pink-500/30 group-hover:scale-105 transition-transform duration-300">
+                    <span class="font-bold text-sm">G.</span>
+                </div>
+                <span
+                    class="font-bold text-lg tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-500 transition-colors">GIRIMI</span>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <a href="index.html"
+                    class="magnetic text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    返回博客
+                </a>
+                <button id="theme-toggle"
+                    class="magnetic p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400">
+                    <i data-lucide="moon" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-content px-6">
+        <article class="max-w-3xl mx-auto py-16">
+
+            <header class="mb-12 reveal">
+                <p class="text-sm text-primary-500 font-semibold mb-4 font-mono">2026-05-06</p>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                    3 版个人主页，差点把自己网线拔了
+                </h1>
+                <p class="text-lg text-slate-500 dark:text-slate-400">
+                    翻出 1.0 的截图一看，自己尬到能抠出三室一厅。
+                </p>
+            </header>
+
+            <div class="blog-post-content reveal text-slate-700 dark:text-slate-300" style="transition-delay: 0.1s;">
+
+                <p>
+                    我主页到现在 3 个版本了。周末翻 1.0 的截图一看，自己尬到能抠出三室一厅。
+                </p>
+
+                <p>
+                    1.0 是大二下做的。当时玻璃拟态、渐变、立体卡片火得不行，我主页全用上了：首页一个 three.js 做的旋转地球，每个项目卡片 hover 上去粒子爆炸，背景是不断变化的动态渐变，鼠标移动整个页面跟着视差。做的时候觉得"这就是未来"，发朋友圈配文"我的新主页"，点赞 30 多。
+                </p>
+
+                <p>
+                    用了一学期后回看：除了"酷"，啥也没有。访客打开我主页，前 3 秒被各种动画吸过去，根本没注意我是谁、我会什么、怎么联系我。
+                </p>
+
+                <p>
+                    2.0 我矫枉过正：黑底白字，衬线字体，无动画，看着像 Notion 那种极简风。高级是高级了，但跟我同学做的极简主页长得一模一样。看 5 秒根本分不出是 GIRIMI 还是 Alice 还是 Bob。
+                </p>
+
+                <p>
+                    现在的 3.0（你正在看的这个）算是想明白了一点：颜色用一套统一的（粉色一路到底），有记忆点；动效只在不干扰内容的时候用，背景那几团飘的模糊球保留，内容元素只做简单淡入；字号梯度拉大到 4 倍以上，视觉层级一眼清晰。
+                </p>
+
+                <p>
+                    但你要说 3.0 完美吗？也没。我自己看着还是觉得有些地方"还能更好"。每次重做都该问自己：上一版哪里没做好？我做 2.0 是因为 1.0 不好看，做 3.0 是因为 2.0 没个性。如果哪天想重做但说不清为什么要重做——大概率现在的版本够用，先别动。
+                </p>
+
+                <p>
+                    4.0 会是什么？老实说我也不知道。也许会加更多项目、也许会做英文版、也许会把背景动画也砍了。
+                </p>
+
+                <p>
+                    如果你主页也做了一半觉得"方向不太对"，建议先拿给 3 个非技术朋友看，问他们"你觉得这是谁做的、做什么的"。答得出来，方向就对了。答不出来，你只是在做表面文章。
+                </p>
+
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 reveal"
+                style="transition-delay: 0.2s;">
+                <a href="index.html"
+                    class="magnetic inline-flex items-center gap-2 text-sm font-semibold text-primary-500 hover:gap-3 transition-all">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    返回博客列表
+                </a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="py-8 text-center text-slate-400 dark:text-slate-600 text-xs font-mono">
+        <p>&copy; 2025 GIRIMI. DESIGNED & CODED WITH PASSION.</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
