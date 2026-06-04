@@ -191,16 +191,31 @@
                 </div>
 
                 <!-- Project Card 2 -->
-                <div class="reveal glass-panel rounded-3xl p-8 md:p-12 flex flex-col justify-center items-center text-center border-dashed border-2 border-slate-300 dark:border-slate-700 hover:border-primary-400 transition-colors group magnetic"
+                <div
+                    class="reveal group relative rounded-3xl overflow-hidden glass-panel hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-500 min-h-[20rem] flex flex-col justify-end p-8 border hover:border-pink-300/50 dark:hover:border-pink-500/30 magnetic"
                     style="transition-delay: 0.1s;">
-                    <div
-                        class="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-zinc-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="code-2" class="w-8 h-8 text-slate-400"></i>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/90 dark:to-black/90 z-0">
                     </div>
-                    <h3 class="text-xl font-bold mb-2">项目暂时还没准备好</h3>
-                    <p class="text-slate-500 dark:text-slate-500 text-sm max-w-xs mx-auto">
-                        暂时没有厉害的项目，但我仍在努力学习和发展自己喜欢的【内容/方向】。
-                    </p>
+
+                    <div class="relative z-10">
+                        <div class="flex gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/50 dark:bg-black/50 backdrop-blur-md text-xs font-medium border border-white/20">Java · Spring Boot</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/50 dark:bg-black/50 backdrop-blur-md text-xs font-medium border border-white/20">Vue 3 · 小程序</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                            Girii Design
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2">
+                            面向独立设计师工作室的低代码生产管理平台。Spring Boot + Vue 3 + 微信小程序，AI 客服 + 动态表单 + 工作流推进。
+                        </p>
+                        <a href="https://github.com/kimo3412/GiriiDesign" target="_blank"
+                            class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-zinc-800 text-slate-900 dark:text-white shadow-lg group-hover:bg-primary-500 group-hover:text-white transition-all transform group-hover:rotate-45 magnetic">
+                            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
