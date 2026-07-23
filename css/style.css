@@ -192,3 +192,102 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 10px 40px rgba(236, 72, 153, 0.15);
 }
+
+/* ===== LINK UNDERLINE HOVER DRAW ===== */
+.link-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1.5px;
+    background: currentColor;
+    transition: width 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.link-underline:hover::after {
+    width: 100%;
+}
+
+/* ===== TECH STACK CHIPS ===== */
+.chip {
+    display: inline-block;
+    padding: 0.4rem 0.85rem;
+    background: rgba(236, 72, 153, 0.08);
+    color: #be185d;
+    border: 1px solid rgba(236, 72, 153, 0.15);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
+    transition: all 0.25s ease;
+    cursor: default;
+}
+
+.chip:hover {
+    background: rgba(236, 72, 153, 0.18);
+    border-color: rgba(236, 72, 153, 0.35);
+    transform: translateY(-2px);
+}
+
+.dark .chip {
+    background: rgba(236, 72, 153, 0.15);
+    color: #f9a8d4;
+    border-color: rgba(236, 72, 153, 0.2);
+}
+
+.dark .chip:hover {
+    background: rgba(236, 72, 153, 0.28);
+    border-color: rgba(236, 72, 153, 0.45);
+}
+
+/* ===== STACK CARD (Tech Stack section) ===== */
+.stack-card {
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.stack-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(236, 72, 153, 0.12);
+}
+
+.stack-card .flex.flex-wrap,
+.stack-card .flex.items-center {
+    justify-content: center;
+}
+
+/* ===== 3D TILT (data-tilt) ===== */
+[data-tilt] {
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+/* ===== SCRAMBLE TEXT (data-scramble) ===== */
+[data-scramble] {
+    font-variant-ligatures: none;
+}
+
+/* ===== ROLE ROTATE (data-roles) ===== */
+[data-roles] {
+    display: inline-block;
+    min-width: 5em;
+    text-align: left;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+[data-roles].role-fade-out {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+
+[data-roles].role-fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}

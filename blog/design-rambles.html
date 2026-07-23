@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>为啥这个网站长这样 | GIRIMI Blog</title>
+
+    <meta name="description" content="聊聊我这个个人主页的设计思路，颜色、玻璃、动效、留白都怎么想的。">
+    <meta property="og:title" content="为啥这个网站长这样">
+    <meta property="og:description" content="个人主页设计复盘，聊聊为啥选这套视觉。">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf2f8', 100: '#fce7f3', 500: '#ec4899', 600: '#db2777', 700: '#be185d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+
+<body class="text-slate-800 dark:text-slate-200 transition-colors duration-700 antialiased">
+
+    <!-- Mesh Background -->
+    <div class="mesh-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+            <a href="../index.html" class="magnetic group flex items-center gap-2">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white shadow-lg shadow-pink-500/30 group-hover:scale-105 transition-transform duration-300">
+                    <span class="font-bold text-sm">G.</span>
+                </div>
+                <span
+                    class="font-bold text-lg tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-500 transition-colors">GIRIMI</span>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <a href="index.html"
+                    class="magnetic text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    返回博客
+                </a>
+                <button id="theme-toggle"
+                    class="magnetic p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400">
+                    <i data-lucide="moon" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-content px-6">
+        <article class="max-w-3xl mx-auto py-16">
+
+            <!-- Header -->
+            <header class="mb-12 reveal">
+                <p class="text-sm text-primary-500 font-semibold mb-4 font-mono">2026-05-23</p>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                    为啥这个网站长这样
+                </h1>
+                <p class="text-lg text-slate-500 dark:text-slate-400">
+                    聊聊我这个主页的设计，颜色、玻璃、动效、留白都怎么想的。
+                </p>
+            </header>
+
+            <!-- Content -->
+            <div class="blog-post-content reveal text-slate-700 dark:text-slate-300" style="transition-delay: 0.1s;">
+
+                <p>
+                    最近有朋友问我这个主页是咋设计的。说实话我每次被问都卡一下，因为我也讲不出啥"设计理论"，就是凭感觉一个个决定加上去的。趁现在有空，我把脑子里这些乱七八糟的想法捋一下。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">颜色为啥就一种</h2>
+
+                <p>
+                    全站就一个粉色系，从 logo 到按钮到滚动条都是。倒不是因为我多喜欢粉色，是因为一个站上颜色多了就乱。我之前看过一些"高级感"的站，最后总结下来就一条：<strong>颜色别超过两个</strong>。一个是主色，一个是黑/白/灰这种中性色。
+                </p>
+
+                <p>
+                    我主色选粉色是因为它不太"程序员"——我同学的主页大部分是黑蓝白，看着都挺像 GitHub README。粉色起码一眼能跟别人不一样。暗色模式也是同样的粉色，只是把背景换成了黑色，文字换成浅色，整体感觉还是那个站。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">背景那几个模糊球是干啥的</h2>
+
+                <p>
+                    主页 hero 区背景飘的 3 个粉色模糊球，业内叫 mesh gradient 或者 aurora 效果。我自己用的时候其实没想那么多，纯粹是觉得"光一个纯色背景太素了"。
+                </p>
+
+                <p>
+                    实现上挺简单的——3 个 absolute 定位的 div，分别贴左下、右上、中间，再用 CSS 的 <code>filter: blur(80px)</code> 把它们糊成一大坨。最后用 GSAP 给它们做随机飘动，整体看着就跟呼吸一样"活"的。
+                </p>
+
+                <p>
+                    有人问这玩意会不会影响性能，会。但只要数量控制在 3-5 个、blur 值别超过 100px，就还好。低端机会掉帧但不至于卡成 PPT。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">玻璃效果</h2>
+
+                <p>
+                    卡片、链接按钮、navbar 都用了玻璃效果——半透明背景 + 模糊背后。CSS 就几行：<code>backdrop-filter: blur(20px)</code>，关键。
+                </p>
+
+                <p>
+                    玻璃好看是因为它有"层次"——你能透过卡片看到后面那个飘的模糊球。纯实色卡片就没这种感觉。代价就是 <code>backdrop-filter</code> 在低端机会掉帧，但我赌了大部分访客是 Mac/iPhone 看的，应该还行。
+                </p>
+
+                <p>
+                    另一个细节是玻璃我只用在"装饰容器"上——链接按钮、tag 标签。核心内容（标题、段落）永远纯色背景 + 纯色文字。好看和能看总得先选能看。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">动效这块</h2>
+
+                <p>
+                    我没搞那种"鼠标移动整个网站跟着倾斜"或者"页面切换有花式过渡"那种重特效。一是不太实用（看了 3 次就腻了），二是低端机会卡。
+                </p>
+
+                <p>
+                    我加的几个动效都挺克制的：
+                </p>
+
+                <p>
+                    <strong>1. Reveal 入场</strong>——滚动到某个 section，那段内容淡入 + 上移。所有人都在做，不稀奇，但是有跟没有就是不一样。
+                </p>
+
+                <p>
+                    <strong>2. 卡片 3D 倾斜</strong>——鼠标 hover 卡片，卡片根据鼠标位置轻微倾斜一下。这个是我最近才加的（之前嫌太花哨）。后来想想加上去挺解压的，就保留了。
+                </p>
+
+                <p>
+                    <strong>3. 背景模糊球飘动</strong>——3 个 blob 各自 GSAP 飘。永不停止但很慢（8-12 秒一个循环），看着不累。
+                </p>
+
+                <p>
+                    没了。整站就这 3 个动效。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">字号梯度</h2>
+
+                <p>
+                    主页 hero 标题 80px，正文段落 18px，差了 4 倍多。这个我是看 Apple 官网学的——大标题巨大小字正常，中间不要中间值。
+                </p>
+
+                <p>
+                    之前我做过一版所有字都差不多大（22-28px 之间），结果整页看着像一份 Word 文档，谁是主角分不清。现在 80px vs 18px 一对比，眼睛立刻知道看哪里。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">留白</h2>
+
+                <p>
+                    每个 section 之间至少 8rem（128px）的空白。看着浪费空间，但实际让眼睛有喘息。挤得满满当当的页面读起来累。
+                </p>
+
+                <p>
+                    卡片内部的 padding 也给得大方——p-8 (32px) 是默认，hero 区域甚至 p-16 (64px)。我同学有的主页把卡片 padding 设成 p-4，看着就"抠"。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">按钮的 3 种风格</h2>
+
+                <p>
+                    一个页面里我用了 3 种不同风格的按钮：
+                </p>
+
+                <p>
+                    <strong>实色</strong>（"浏览作品"）—— 黑底白字，最强对比，最重要的 CTA。
+                </p>
+
+                <p>
+                    <strong>玻璃</strong>（"联系我"）—— 半透明背景，能看到后面的渐变。次要的 CTA。
+                </p>
+
+                <p>
+                    <strong>品牌色</strong>（"发送邮件"）—— 粉色背景白字。强引导的 CTA。
+                </p>
+
+                <p>
+                    同一页里 3 种按钮形成视觉节奏，访客一眼就知道哪个最重要（实色）、哪个是辅助（玻璃）、哪个是 action（品牌色）。
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">最后</h2>
+
+                <p>
+                    设计这事挺私人的，没有标准答案。我这套搭配是按"我自己看着舒服"来的，不一定适合别人。如果让我给一个通用建议就俩字：克制。
+                </p>
+
+                <p>
+                    颜色克制、动效克制、按钮种类克制。少即是多——我之前 1.0 主页就是没克制住，全站塞满了动效，结果除了"酷"啥也没传达。3.0 这版我克制了很多，反而看着更顺眼。
+                </p>
+
+                <p>
+                    诶对了，4.0 啥时候来我现在也不知道。也许哪天我又"克制不住"了，那再说吧。
+                </p>
+
+            </div>
+
+            <!-- Back Link -->
+            <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 reveal"
+                style="transition-delay: 0.2s;">
+                <a href="index.html"
+                    class="magnetic inline-flex items-center gap-2 text-sm font-semibold text-primary-500 hover:gap-3 transition-all">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    返回博客列表
+                </a>
+            </div>
+
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-slate-400 dark:text-slate-600 text-xs font-mono">
+        <p>&copy; 2025 GIRIMI. DESIGNED & CODED WITH PASSION.</p>
+    </footer>
+
+    <!-- Shared JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

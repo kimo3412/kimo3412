@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initMagneticEffect();
     initBlobAnimation();
     initNavbarScroll();
+    initScramble();
+    initRoleRotate();
+    initTilt();
 });
 
 // ===== SCROLL REVEAL =====
@@ -144,5 +147,163 @@ function initNavbarScroll() {
             nav.classList.remove('nav-glass', 'shadow-sm', 'py-4');
             nav.classList.add('py-6');
         }
+    });
+}
+
+// ===== SCRAMBLE TEXT (data-scramble) =====
+// Cycles each character through random glyphs, then resolves to the real text.
+function initScramble() {
+    const CHARS = '!<>-_\\/[]{}—=+*^?#________01';
+    const targets = document.querySelectorAll('[data-scramble]');
+    if (!targets.length) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function scramble(el) {
+        if (el.dataset.scrambled === '1') return;
+        el.dataset.scrambled = '1';
+
+        const final = el.textContent;
+        const len = final.length;
+        const duration = 700;          // total
+        const frameMs = 35;            // ~28 fps
+        const totalFrames = Math.ceil(duration / frameMs);
+        let frame = 0;
+
+        // Preserve spaces; scramble everything else
+        const queue = Array.from({ length: len }, (_, i) => ({
+            from: '',
+            to: final[i],
+            start: Math.floor(Math.random() * totalFrames * 0.6),
+            end: Math.floor(totalFrames * 0.4 + Math.random() * totalFrames * 0.6),
+        }));
+
+        function update() {
+            let out = '';
+            for (let i = 0; i < len; i++) {
+                const q = queue[i];
+                if (frame >= q.end) {
+                    out += q.to;
+                } else if (frame >= q.start) {
+                    if (q.to === ' ') {
+                        out += ' ';
+                    } else {
+                        out += CHARS[Math.floor(Math.random() * CHARS.length)];
+                    }
+                } else {
+                    out += final[i];
+                }
+            }
+            el.textContent = out;
+            if (frame < totalFrames) {
+                frame++;
+                setTimeout(update, frameMs);
+            } else {
+                el.textContent = final; // ensure exact final state
+            }
+        }
+
+        if (prefersReduced) {
+            el.textContent = final;
+        } else {
+            update();
+        }
+    }
+
+    // Trigger when each target enters the viewport
+    if (!('IntersectionObserver' in window)) {
+        targets.forEach(scramble);
+        return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                scramble(entry.target);
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    targets.forEach(el => obs.observe(el));
+}
+
+// ===== ROLE ROTATE (data-roles) =====
+// Cycles through a list of strings with a fade transition.
+function initRoleRotate() {
+    const targets = document.querySelectorAll('[data-roles]');
+    if (!targets.length) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    targets.forEach(el => {
+        // Read role list from data attribute, fall back to nothing
+        let roles = [];
+        try {
+            roles = JSON.parse(el.getAttribute('data-roles-list') || '[]');
+        } catch (e) {
+            roles = [];
+        }
+        if (roles.length < 2) return;
+
+        el.classList.add('role-fade-in');
+        let idx = 0;
+
+        if (prefersReduced) {
+            el.textContent = roles[0];
+            return;
+        }
+
+        setInterval(() => {
+            idx = (idx + 1) % roles.length;
+            el.classList.remove('role-fade-in');
+            el.classList.add('role-fade-out');
+            setTimeout(() => {
+                el.textContent = roles[idx];
+                el.classList.remove('role-fade-out');
+                el.classList.add('role-fade-in');
+            }, 220);
+        }, 2400);
+    });
+}
+
+// ===== 3D TILT (data-tilt) =====
+// Subtle perspective tilt that follows the cursor.
+function initTilt() {
+    const targets = document.querySelectorAll('[data-tilt]');
+    if (!targets.length) return;
+
+    const supportsTouch = matchMedia('(hover: none)').matches;
+    if (supportsTouch) return; // skip on touch devices
+
+    const MAX = 7; // degrees
+
+    targets.forEach(el => {
+        let rect = null;
+        let rafId = null;
+
+        function apply(x, y) {
+            if (!rect) rect = el.getBoundingClientRect();
+            const px = (x - rect.left) / rect.width;   // 0..1
+            const py = (y - rect.top) / rect.height;
+            const rotY = (px - 0.5) * 2 * MAX;          // -MAX..MAX
+            const rotX = (0.5 - py) * 2 * MAX;
+            el.style.transform =
+                `perspective(900px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateZ(0)`;
+            rafId = null;
+        }
+
+        el.addEventListener('mousemove', (e) => {
+            if (rafId) return;
+            rafId = requestAnimationFrame(() => apply(e.clientX, e.clientY));
+        });
+
+        el.addEventListener('mouseleave', () => {
+            if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+            el.style.transform = '';
+            rect = null;
+        });
+
+        // Recompute rect on resize/scroll so coords stay aligned
+        window.addEventListener('scroll', () => { rect = null; }, { passive: true });
+        window.addEventListener('resize', () => { rect = null; });
     });
 }

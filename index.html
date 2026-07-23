@@ -69,13 +69,15 @@
             <div class="flex items-center gap-4">
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600 dark:text-slate-400">
-                    <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关于</a>
+                    <a href="#about" class="link-underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关于</a>
+                    <a href="#stack"
+                        class="link-underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">技术栈</a>
                     <a href="#projects"
-                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">精选项目</a>
+                        class="link-underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">精选项目</a>
                     <a href="blog/index.html"
-                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">博客</a>
+                        class="link-underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">博客</a>
                     <a href="links.html"
-                        class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Links</a>
+                        class="link-underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Links</a>
                 </div>
 
                 <!-- Theme Toggle -->
@@ -98,6 +100,8 @@
             <div class="flex flex-col p-6 space-y-4 text-center font-medium">
                 <a href="#about"
                     class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关于</a>
+                <a href="#stack"
+                    class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">技术栈</a>
                 <a href="#projects"
                     class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">精选项目</a>
                 <a href="blog/index.html"
@@ -120,15 +124,17 @@
 
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 leading-tight">
                     Create with <br class="hidden md:block" />
-                    <span class="text-gradient">Logic & Passion</span>
+                    <span class="text-gradient" data-scramble>Logic & Passion</span>
                 </h1>
             </div>
 
-            <p class="reveal text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10"
+            <p class="reveal text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-3"
                 style="transition-delay: 0.1s;">
                 你好，我是 <strong class="text-slate-900 dark:text-white">GIRIMI</strong>。
                 <br>
-                一名热衷于构建优雅数字体验的软件工程系学生。在这里，我将创意转化为可交互的代码。
+                一名<span class="role-rotate text-primary-500 font-semibold" data-roles
+                    data-roles-list='["软件工程系学生", "Java 开发工程师", "全栈开发者", "终身学习者"]'>软件工程系学生</span>，
+                热衷于构建优雅数字体验。在这里，我将创意转化为可交互的代码。
             </p>
 
             <div class="reveal flex flex-col md:flex-row gap-4 justify-center items-center"
@@ -149,6 +155,83 @@
         </div>
     </section>
 
+    <!-- Tech Stack Section -->
+    <section id="stack" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-3">技术栈</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm md:text-base">
+                    主力 Java · 全栈开发
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5">
+
+                <!-- Backend -->
+                <div class="reveal stack-card glass-panel rounded-2xl p-6" style="transition-delay: 0.05s;">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="server" class="w-4 h-4 text-primary-500"></i>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">后端</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="chip">Java</span>
+                        <span class="chip">Spring Boot 3</span>
+                        <span class="chip">Spring Cloud</span>
+                        <span class="chip">MyBatis-Plus</span>
+                        <span class="chip">Python</span>
+                    </div>
+                </div>
+
+                <!-- Frontend -->
+                <div class="reveal stack-card glass-panel rounded-2xl p-6" style="transition-delay: 0.1s;">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="monitor" class="w-4 h-4 text-primary-500"></i>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">前端</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="chip">Vue 3</span>
+                        <span class="chip">TypeScript</span>
+                        <span class="chip">Pinia</span>
+                        <span class="chip">Vite</span>
+                        <span class="chip">Naive UI</span>
+                        <span class="chip">Uni-app</span>
+                    </div>
+                </div>
+
+                <!-- Database & DevOps -->
+                <div class="reveal stack-card glass-panel rounded-2xl p-6" style="transition-delay: 0.15s;">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="database" class="w-4 h-4 text-primary-500"></i>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">数据库 & 部署</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="chip">MySQL 8.0</span>
+                        <span class="chip">SQL Server</span>
+                        <span class="chip">Redis 7</span>
+                        <span class="chip">Docker</span>
+                        <span class="chip">Linux</span>
+                    </div>
+                </div>
+
+                <!-- Tooling & More -->
+                <div class="reveal stack-card glass-panel rounded-2xl p-6" style="transition-delay: 0.2s;">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="wrench" class="w-4 h-4 text-primary-500"></i>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">工具 & 其他</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="chip">Git / GitFlow</span>
+                        <span class="chip">OpenAI 协议</span>
+                        <span class="chip">LLM 接入</span>
+                        <span class="chip">Postman</span>
+                        <span class="chip">ECharts</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects" class="py-32 px-6">
         <div class="max-w-7xl mx-auto">
@@ -158,7 +241,7 @@
                     <p class="text-slate-500 dark:text-slate-400">Coding, Designing, and Thinking.</p>
                 </div>
                 <a href="https://github.com/kimo3412" target="_blank"
-                    class="text-sm font-semibold text-primary-600 dark:text-primary-400 flex items-center gap-1 hover:gap-2 transition-all magnetic">
+                    class="link-underline text-sm font-semibold text-primary-600 dark:text-primary-400 flex items-center gap-1 hover:gap-2 transition-all magnetic">
                     查看 GitHub <i data-lucide="external-link" class="w-4 h-4"></i>
                 </a>
             </div>
@@ -166,7 +249,7 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Project Card 1 -->
                 <div
-                    class="reveal group relative rounded-3xl overflow-hidden glass-panel hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-500 h-[28rem] flex flex-col justify-end p-8 border hover:border-pink-300/50 dark:hover:border-pink-500/30 magnetic">
+                    class="reveal group relative rounded-3xl overflow-hidden glass-panel hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-500 h-[28rem] flex flex-col justify-end p-8 border hover:border-pink-300/50 dark:hover:border-pink-500/30 magnetic" data-tilt>
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/90 dark:to-black/90 z-0">
                     </div>
 
@@ -192,7 +275,7 @@
 
                 <!-- Project Card 2 -->
                 <div
-                    class="reveal group relative rounded-3xl overflow-hidden glass-panel hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-500 min-h-[20rem] flex flex-col justify-end p-8 border hover:border-pink-300/50 dark:hover:border-pink-500/30 magnetic"
+                    class="reveal group relative rounded-3xl overflow-hidden glass-panel hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-500 min-h-[20rem] flex flex-col justify-end p-8 border hover:border-pink-300/50 dark:hover:border-pink-500/30 magnetic" data-tilt
                     style="transition-delay: 0.1s;">
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/90 dark:to-black/90 z-0">
                     </div>
