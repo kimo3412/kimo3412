@@ -1,189 +1,137 @@
-# GIRIMI 静态站点使用教程
+<div align="center">
 
-本教程将教你如何管理和更新你的个人网站。
+# 你好，我是 GIRIMI 👋
 
----
+**软件工程系学生 · Java 全栈开发 · 创意开发者**
 
-## 📁 站点结构
+<p>
+  <img src="https://komarev.com/ghpvc/?username=kimo3412&color=ec4899&style=flat-square" alt="profile views" />
+  <a href="https://github.com/kimo3412?tab=followers"><img src="https://img.shields.io/github/followers/kimo3412?style=flat-square&color=ec4899" alt="followers" /></a>
+  <a href="https://github.com/kimo3412?tab=repositories"><img src="https://img.shields.io/github/stars/kimo3412?style=flat-square&color=ec4899" alt="stars" /></a>
+</p>
 
-```
-kimo3412/
-├── index.html          ← 首页
-├── links.html          ← 社交链接页
-├── 404.html            ← 错误页面
-├── css/style.css       ← 共享样式
-├── js/main.js          ← 共享脚本
-├── projects/           ← 项目详情
-│   └── portfolio-2024.html
-└── blog/               ← 博客
-    ├── index.html      ← 博客列表
-    └── hello-world.html
-```
+</div>
 
 ---
 
-## 🔗 如何添加新链接
+## 🚀 About Me
 
-打开 `links.html`，找到 `<!-- ===== 实用工具区域 ===== -->` 注释，复制以下代码：
+- 🎓 全日制本科 · 徐州工程学院 · 软件工程（2022 - 2026）
+- 💼 求职意向：**Java 全栈开发**
+- 🌱 目前在折腾：Java / Spring Boot / Vue 3 / LLM 接入
+- 🏢 实习经历：无锡龙云网络科技 · Java 全栈开发（2025.11 - 2026.2）
+- 📍 现居：江苏徐州
+- 🏆 校 ACM 二等奖 · 校 Java 技能大赛二等奖 · 校二等奖学金
 
-```html
-<a href="你的链接" target="_blank"
-    class="link-card reveal glass-panel block w-full p-5 rounded-2xl text-center font-semibold hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
-    style="transition-delay: 0.45s;">
-    <i data-lucide="globe" class="w-5 h-5 text-blue-500"></i>
-    <span>链接名称</span>
-</a>
-```
+## 🛠️ Tech Stack
 
-### 常用图标
+### 后端
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
+![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=spring-security&logoColor=white)
+![Spring Cloud](https://img.shields.io/badge/Spring_Cloud-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![MyBatis Plus](https://img.shields.io/badge/MyBatis--Plus-1E7AE0?style=for-the-badge&logo=mybatis&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-| 图标名 | 用途 |
-|--------|------|
-| `globe` | 网站 |
-| `github` | GitHub |
-| `youtube` | YouTube |
-| `twitter` | Twitter/X |
-| `instagram` | Instagram |
-| `music` | 音乐 |
-| `bot` | AI工具 |
-| `wrench` | 工具 |
-| `book-open` | 博客/文档 |
+### 前端
+![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Pinia](https://img.shields.io/badge/Pinia-FFD859?style=for-the-badge&logo=pinia&logoColor=black)
+![Naive UI](https://img.shields.io/badge/Naive_UI-3a3a3a?style=for-the-badge&logo=vue.js&logoColor=4FC08D)
+![uni-app](https://img.shields.io/badge/uni--app-2C8EFF?style=for-the-badge&logo=dcloud&logoColor=white)
 
-**完整图标**: https://lucide.dev/icons
+### 数据库 & 部署
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 
----
+### 工具
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ_IDEA-000000?style=for-the-badge&logo=intellijidea&logoColor=white)
 
-## 📝 如何添加博客文章
+## 📊 GitHub Stats
 
-### 步骤 1: 创建文章文件
+<p align="center">
+  <img height="170" src="https://github-readme-stats.vercel.app/api?username=kimo3412&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=ec4899&text_color=ffffff&icon_color=ec4899" alt="GitHub Stats" />
+  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=kimo3412&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=ec4899&text_color=ffffff" alt="Top Languages" />
+</p>
 
-复制 `blog/hello-world.html`，重命名为 `blog/新文章名.html`
+## 🏆 GitHub Trophies
 
-### 步骤 2: 修改文章内容
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=kimo3412&theme=radical&no-frame=true&no-bg=false&margin-w=4&column=7" alt="GitHub Trophies" />
+</p>
 
-打开新文件，修改以下部分：
+## 📈 Contribution Graph
 
-```html
-<!-- 修改标题 -->
-<title>文章标题 | GIRIMI Blog</title>
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=kimo3412&theme=react-dark&hide_border=true&area=true" alt="Activity Graph" />
+</p>
 
-<!-- 修改日期 -->
-<p class="text-sm text-primary-500 font-semibold mb-4 font-mono">2025-01-07</p>
+## 🔥 Featured Projects
 
-<!-- 修改大标题 -->
-<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-    文章标题
-</h1>
+<table>
+<tr>
+<td width="50%">
 
-<!-- 修改正文 (在 blog-post-content div 内) -->
-<p>你的文章内容...</p>
-```
+### 🎨 [Girii Design](https://github.com/kimo3412/GiriiDesign)
+面向独立设计师工作室的低代码生产管理平台。
 
-### 步骤 3: 添加到博客列表
+- 后端：Spring Boot 3 + MySQL 8.0 + Redis 7
+- 前端：Vue 3 + TypeScript + Pinia + Naive UI
+- 小程序：Uni-app（微信小程序）
+- AI：OpenAI 协议兼容多模型接入
+- 部署：Docker Compose 一键起
 
-打开 `blog/index.html`，在文章列表中添加：
+</td>
+<td width="50%">
 
-```html
-<a href="新文章名.html" class="reveal block glass-panel rounded-3xl p-8 hover:shadow-xl transition-all group">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-            <p class="text-xs text-slate-400 mb-2 font-mono">2025-01-07</p>
-            <h2 class="text-xl font-bold mb-2 group-hover:text-primary-600 transition-colors">
-                文章标题
-            </h2>
-            <p class="text-slate-500 text-sm line-clamp-2">
-                文章摘要...
-            </p>
-        </div>
-        <div class="flex items-center gap-2 text-primary-500 font-semibold text-sm shrink-0">
-            阅读 <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </div>
-    </div>
-</a>
-```
+### 🌐 [Portfolio 2024](https://girimi.dpdns.org)
+你正在浏览的本站。纯 HTML + Tailwind CSS + GSAP。
 
----
+- 玻璃拟态 + Mesh 渐变背景
+- 暗色模式 + 响应式布局
+- 微动效：Reveal / 3D 倾斜 / Scramble / 角色轮换
+- 部署：Cloudflare Pages
 
-## 🖼️ 如何在博客中添加图片
+</td>
+</tr>
+</table>
 
-### 图片存放位置
+## ✍️ Recent Blog Posts
 
-将图片放入 `assets/images/` 文件夹：
+<!-- 手动维护 · 维护方法见 BLOG.md -->
 
-```
-kimo3412/
-├── assets/
-│   └── images/
-│       ├── my-photo.jpg
-│       └── screenshot.png
-└── blog/
-    └── hello-world.html
-```
+- [为啥这个网站长这样](blog/design-rambles.html) · 2026-05-23 · 聊聊这个主页的设计思路
+- [3 版个人主页，差点把自己网线拔了](blog/website-iterations.html) · 2026-05-06 · 从 1.0 到 3.0 的复盘
+- [Hello World - 我的第一篇博客](blog/hello-world.html) · 2025-01-06 · 开篇
 
-### 在博客中使用图片
+📖 完整使用指南见 [BLOG.md](BLOG.md)
 
-在文章的 `<div class="blog-post-content">` 内添加：
+## 📫 Contact
 
-```html
-<!-- 基础图片 -->
-<img src="../assets/images/图片名.jpg" alt="图片描述" class="rounded-2xl my-8 w-full">
+<p>
+  <a href="mailto:2034409413@qq.com"><img src="https://img.shields.io/badge/QQ邮箱-2034409413@qq.com-ec4899?style=flat-square&logo=tencentqq&logoColor=white" /></a>
+  <a href="mailto:shanrzkimo@outlook.com"><img src="https://img.shields.io/badge/Outlook-shanrzkimo@outlook.com-ec4899?style=flat-square&logo=microsoftoutlook&logoColor=white" /></a>
+  <a href="https://github.com/kimo3412"><img src="https://img.shields.io/badge/GitHub-@kimo3412-181717?style=flat-square&logo=github&logoColor=white" /></a>
+</p>
 
-<!-- 带标题的图片 -->
-<figure class="my-8">
-    <img src="../assets/images/图片名.jpg" alt="图片描述" class="rounded-2xl w-full">
-    <figcaption class="text-center text-sm text-slate-400 mt-3">图片说明文字</figcaption>
-</figure>
+- 📧 邮箱：`2034409413@qq.com` / `shanrzkimo@outlook.com`
+- 📱 电话/微信：`15061529000`
+- 🐙 GitHub：[@kimo3412](https://github.com/kimo3412)
+- 🌐 个人网站：<https://girimi.dpdns.org>
 
-<!-- 居中小图 -->
-<img src="../assets/images/图片名.jpg" alt="描述" class="rounded-2xl my-8 mx-auto max-w-md">
-```
+## ⚡ Fun Fact
 
-> **注意**: 博客文章在 `blog/` 文件夹内，所以路径要用 `../assets/images/`
-
-### 步骤 1: 创建项目文件
-
-复制 `projects/portfolio-2024.html`，重命名为 `projects/新项目名.html`
-
-### 步骤 2: 修改项目内容
-
-修改标题、描述、技术栈标签等。
-
-### 步骤 3: 在首页添加项目卡片
-
-打开 `index.html`，找到项目区域，添加新的项目卡片。
+写代码的时候桌上一定要有水。没有水我会写不出来。
 
 ---
 
-## 🚀 部署到 Cloudflare
-
-1. 将所有文件推送到 GitHub:
-   ```bash
-   git add .
-   git commit -m "更新网站"
-   git push
-   ```
-
-2. Cloudflare Pages 会自动检测并部署更新
-
----
-
-## 🎨 自定义颜色
-
-编辑 `css/style.css` 中的颜色值：
-
-- 主色调: `#ec4899` (粉色)
-- 深色模式背景: `#09090b`
-- 浅色模式背景: `#FAFAFA`
-
----
-
-## ❓ 常见问题
-
-**Q: 图标不显示？**  
-A: 确保使用了正确的 Lucide 图标名，参考 https://lucide.dev/icons
-
-**Q: 样式不生效？**  
-A: 检查是否正确引用了 `css/style.css`
-
-**Q: 如何修改深色模式？**  
-A: 在 CSS 中添加 `.dark` 前缀，如 `.dark .text-gradient`
+<div align="center">
+  <sub>📍 江苏徐州 · 📅 2022 - 2026 在读</sub>
+</div>
