@@ -89,10 +89,16 @@
         <div class="max-w-4xl mx-auto py-16">
 
             <!-- Header -->
-            <header class="mb-16 reveal">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
-                <p class="text-lg text-slate-500 dark:text-slate-400">
-                    关于代码、设计与生活的思考
+            <header class="mb-14 reveal">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel mb-4 text-xs font-mono font-semibold text-primary-600 dark:text-pink-400 border border-pink-200/50 dark:border-pink-900/40">
+                    <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+                    <span>git commit -m "日常碎碎念"</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+                    赛博废话档案馆 <span class="text-gradient">.log</span>
+                </h1>
+                <p class="text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
+                    “在我的电脑上明明能跑” —— 记录敲代码被网线勒住的日常、审美自救指南与野生脑洞。
                 </p>
             </header>
 
@@ -101,16 +107,21 @@
 
                 <!-- Post Card 1 -->
                 <a href="hello-world.html"
-                    class="magnetic reveal block glass-panel rounded-3xl p-8 hover:shadow-xl hover:shadow-pink-500/5 transition-all group" data-tilt>
+                    class="magnetic reveal block glass-panel rounded-3xl p-7 md:p-8 hover:shadow-xl hover:shadow-pink-500/5 hover:border-pink-300/50 dark:hover:border-pink-500/30 transition-all group" data-tilt>
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
-                            <p class="text-xs text-slate-400 mb-2 font-mono">2025-01-06</p>
+                            <div class="flex items-center gap-3 text-xs text-slate-400 mb-2 font-mono">
+                                <span>2025-01-06</span>
+                                <span>•</span>
+                                <span class="text-pink-500 font-sans">⏱️ 2 min read</span>
+                                <span class="px-2 py-0.5 rounded-full bg-pink-100/60 dark:bg-pink-950/40 text-pink-600 dark:text-pink-400 text-[10px]">#万物起源</span>
+                            </div>
                             <h2
                                 class="text-xl font-bold mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                                Hello World - 我的第一篇博客
+                                Hello World：万物起源，但控制台先报了个 Warning
                             </h2>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2">
-                                欢迎来到我的博客！这是我的第一篇文章，在这里我将分享我在编程和设计方面的学习心得...
+                            <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 leading-relaxed">
+                                欢迎来到我的博客！每个程序员梦开始的地方，顺手 console.log('wtf') 确认环境没崩，顺便立几个迟早要鸽的 flag……
                             </p>
                         </div>
                         <div class="flex items-center gap-2 text-primary-500 font-semibold text-sm shrink-0">
@@ -122,17 +133,22 @@
 
                 <!-- Post Card 2 -->
                 <a href="website-iterations.html"
-                    class="magnetic reveal block glass-panel rounded-3xl p-8 hover:shadow-xl hover:shadow-pink-500/5 transition-all group" data-tilt
+                    class="magnetic reveal block glass-panel rounded-3xl p-7 md:p-8 hover:shadow-xl hover:shadow-pink-500/5 hover:border-pink-300/50 dark:hover:border-pink-500/30 transition-all group" data-tilt
                     style="transition-delay: 0.05s;">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
-                            <p class="text-xs text-slate-400 mb-2 font-mono">2026-05-06</p>
+                            <div class="flex items-center gap-3 text-xs text-slate-400 mb-2 font-mono">
+                                <span>2026-05-06</span>
+                                <span>•</span>
+                                <span class="text-pink-500 font-sans">⏱️ 4 min read</span>
+                                <span class="px-2 py-0.5 rounded-full bg-pink-100/60 dark:bg-pink-950/40 text-pink-600 dark:text-pink-400 text-[10px]">#深夜拔网线</span>
+                            </div>
                             <h2
                                 class="text-xl font-bold mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                                 3 版个人主页，差点把自己网线拔了
                             </h2>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2">
-                                翻出 1.0 的截图一看，自己尬到能抠出三室一厅。
+                            <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 leading-relaxed">
+                                翻出 1.0 的截图一看，自己尬到能抠出三室一厅。从 1.0 到 3.0 的反复横跳、疯狂推翻与深夜心理康复指南。
                             </p>
                         </div>
                         <div class="flex items-center gap-2 text-primary-500 font-semibold text-sm shrink-0">
@@ -144,17 +160,22 @@
 
                 <!-- Post Card 3 -->
                 <a href="design-rambles.html"
-                    class="magnetic reveal block glass-panel rounded-3xl p-8 hover:shadow-xl hover:shadow-pink-500/5 transition-all group" data-tilt
+                    class="magnetic reveal block glass-panel rounded-3xl p-7 md:p-8 hover:shadow-xl hover:shadow-pink-500/5 hover:border-pink-300/50 dark:hover:border-pink-500/30 transition-all group" data-tilt
                     style="transition-delay: 0.1s;">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
-                            <p class="text-xs text-slate-400 mb-2 font-mono">2026-05-23</p>
+                            <div class="flex items-center gap-3 text-xs text-slate-400 mb-2 font-mono">
+                                <span>2026-05-23</span>
+                                <span>•</span>
+                                <span class="text-pink-500 font-sans">⏱️ 5 min read</span>
+                                <span class="px-2 py-0.5 rounded-full bg-pink-100/60 dark:bg-pink-950/40 text-pink-600 dark:text-pink-400 text-[10px]">#全靠毛玻璃硬撑</span>
+                            </div>
                             <h2
                                 class="text-xl font-bold mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                                为啥这个网站长这样
+                                为啥这个网站长这样？因为“审美有限，全靠毛玻璃硬撑”
                             </h2>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2">
-                                聊聊我这个主页的设计，颜色、玻璃、动效、留白都怎么想的。
+                            <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 leading-relaxed">
+                                聊聊我这个主页的设计复盘：颜色、毛玻璃、动效、留白都怎么想的。程序员写前端到底是怎么和审美极限达成和解的。
                             </p>
                         </div>
                         <div class="flex items-center gap-2 text-primary-500 font-semibold text-sm shrink-0">
@@ -165,10 +186,11 @@
                 </a>
 
                 <!-- Placeholder for future posts -->
-                <div class="reveal text-center py-12 glass-panel rounded-3xl border-dashed border-2 border-slate-200 dark:border-slate-700"
+                <div class="reveal text-center py-12 glass-panel rounded-3xl border-dashed border-2 border-slate-200 dark:border-slate-800"
                     style="transition-delay: 0.1s;">
-                    <i data-lucide="pen-tool" class="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto mb-4"></i>
-                    <p class="text-slate-400 dark:text-slate-500">更多文章即将上线...</p>
+                    <i data-lucide="coffee" class="w-9 h-9 text-primary-400 dark:text-primary-500 mx-auto mb-3"></i>
+                    <h3 class="font-bold text-base mb-1">正在努力不摸鱼……</h3>
+                    <p class="text-slate-400 dark:text-slate-500 text-xs font-mono">更多 Bug 修复笔记与脑洞正在后台编译加载中 ☕</p>
                 </div>
 
             </section>

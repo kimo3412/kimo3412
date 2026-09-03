@@ -83,7 +83,7 @@
                         class="link-underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">技术栈</a>
                     <a href="#projects"
                         class="link-underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">精选项目</a>
-                    <a href="blog/index.html"
+                    <a href="#blog"
                         class="link-underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">博客</a>
                     <a href="links.html"
                         class="link-underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Links</a>
@@ -113,7 +113,7 @@
                     class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">技术栈</a>
                 <a href="#projects"
                     class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">精选项目</a>
-                <a href="blog/index.html"
+                <a href="#blog"
                     class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">博客</a>
                 <a href="links.html"
                     class="py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Links</a>
@@ -354,6 +354,89 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel mb-3 text-xs font-mono font-semibold text-primary-600 dark:text-pink-400 border border-pink-200/50 dark:border-pink-900/40">
+                        <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+                        <span>git log --oneline</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight">野生 Bug 饲养笔记</h2>
+                </div>
+                <a href="blog/index.html" class="mt-4 md:mt-0 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:gap-2 flex items-center gap-1 transition-all">
+                    进入完整档案馆 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Blog Preview 1 -->
+                <a href="blog/hello-world.html" class="reveal group p-6 rounded-3xl glass-panel border border-white/50 dark:border-white/10 hover:border-pink-300/60 dark:hover:border-pink-500/40 hover:shadow-xl hover:shadow-pink-500/5 transition-all flex flex-col justify-between magnetic" data-tilt>
+                    <div>
+                        <div class="flex items-center gap-2 text-xs text-slate-400 font-mono mb-3">
+                            <span>2025-01-06</span>
+                            <span>•</span>
+                            <span class="text-pink-500 font-sans">⏱️ 2 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
+                            Hello World：万物起源，但控制台先报了个 Warning
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">
+                            每个程序员梦开始的地方，顺手 console.log('wtf') 确认环境没崩，顺便立几个迟早要鸽的 flag……
+                        </p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-200/50 dark:border-slate-800/60 flex items-center justify-between text-xs text-primary-500 font-medium">
+                        <span>#万物起源</span>
+                        <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">阅读全文 →</span>
+                    </div>
+                </a>
+
+                <!-- Blog Preview 2 -->
+                <a href="blog/website-iterations.html" class="reveal group p-6 rounded-3xl glass-panel border border-white/50 dark:border-white/10 hover:border-pink-300/60 dark:hover:border-pink-500/40 hover:shadow-xl hover:shadow-pink-500/5 transition-all flex flex-col justify-between magnetic" data-tilt style="transition-delay: 0.1s;">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs text-slate-400 font-mono mb-3">
+                            <span>2026-05-06</span>
+                            <span>•</span>
+                            <span class="text-pink-500 font-sans">⏱️ 4 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
+                            3 版个人主页，差点把自己网线拔了
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">
+                            翻出 1.0 的截图一看，自己尬到能抠出三室一厅。从 1.0 到 3.0 的反复横跳与心理康复复盘。
+                        </p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-200/50 dark:border-slate-800/60 flex items-center justify-between text-xs text-primary-500 font-medium">
+                        <span>#深夜拔网线</span>
+                        <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">阅读全文 →</span>
+                    </div>
+                </a>
+
+                <!-- Blog Preview 3 -->
+                <a href="blog/design-rambles.html" class="reveal group p-6 rounded-3xl glass-panel border border-white/50 dark:border-white/10 hover:border-pink-300/60 dark:hover:border-pink-500/40 hover:shadow-xl hover:shadow-pink-500/5 transition-all flex flex-col justify-between magnetic" data-tilt style="transition-delay: 0.15s;">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs text-slate-400 font-mono mb-3">
+                            <span>2026-05-23</span>
+                            <span>•</span>
+                            <span class="text-pink-500 font-sans">⏱️ 5 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
+                            为啥这个网站长这样？因为“审美有限，全靠毛玻璃硬撑”
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">
+                            程序员写前端到底是怎么和审美极限达成和解的？颜色、毛玻璃与动效的大实话。
+                        </p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-200/50 dark:border-slate-800/60 flex items-center justify-between text-xs text-primary-500 font-medium">
+                        <span>#全靠毛玻璃硬撑</span>
+                        <span class="group-hover:translate-x-1 transition-transform flex items-center gap-1">阅读全文 →</span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
