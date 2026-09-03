@@ -29,19 +29,24 @@ function initScrollReveal() {
     const reveals = document.querySelectorAll('.reveal');
     if (!reveals.length) return;
 
+    function activateAll() {
+        reveals.forEach(el => el.classList.add('active'));
+    }
+
     function revealVisible() {
         const vh = window.innerHeight || document.documentElement.clientHeight || 900;
         reveals.forEach(el => {
             const rect = el.getBoundingClientRect();
-            if (rect.top <= vh + 120) {
+            if (rect.top <= vh + 150) {
                 el.classList.add('active');
             }
         });
     }
 
     revealVisible();
-    setTimeout(revealVisible, 100);
-    setTimeout(revealVisible, 400);
+    setTimeout(revealVisible, 80);
+    setTimeout(revealVisible, 300);
+    setTimeout(activateAll, 800);
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

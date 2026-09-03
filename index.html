@@ -184,10 +184,10 @@
             <div class="grid md:grid-cols-2 gap-5">
 
                 <!-- Backend -->
-                <div class="reveal stack-card glass-panel rounded-2xl p-6" style="transition-delay: 0.05s;">
+                <div class="reveal stack-card glass-panel rounded-2xl p-6 border border-white/40 dark:border-white/5 hover:border-amber-400/50 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300 group" style="transition-delay: 0.05s;">
                     <div class="flex items-center gap-2 mb-4">
-                        <i data-lucide="server" class="w-4 h-4 text-primary-500"></i>
-                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">后端</h3>
+                        <i data-lucide="server" class="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">后端架构</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="chip">Java</span>
@@ -200,10 +200,10 @@
                 </div>
 
                 <!-- Frontend -->
-                <div class="reveal stack-card glass-panel rounded-2xl p-6" style="transition-delay: 0.1s;">
+                <div class="reveal stack-card glass-panel rounded-2xl p-6 border border-white/40 dark:border-white/5 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 group" style="transition-delay: 0.1s;">
                     <div class="flex items-center gap-2 mb-4">
-                        <i data-lucide="monitor" class="w-4 h-4 text-primary-500"></i>
-                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">前端</h3>
+                        <i data-lucide="monitor" class="w-4 h-4 text-cyan-500 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">前端交互</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="chip">Vue 3</span>
@@ -216,9 +216,9 @@
                 </div>
 
                 <!-- Database & DevOps -->
-                <div class="reveal stack-card glass-panel rounded-2xl p-6" style="transition-delay: 0.15s;">
+                <div class="reveal stack-card glass-panel rounded-2xl p-6 border border-white/40 dark:border-white/5 hover:border-emerald-400/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 group" style="transition-delay: 0.15s;">
                     <div class="flex items-center gap-2 mb-4">
-                        <i data-lucide="database" class="w-4 h-4 text-primary-500"></i>
+                        <i data-lucide="database" class="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">数据库 & 部署</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
@@ -231,10 +231,10 @@
                 </div>
 
                 <!-- Tooling & More -->
-                <div class="reveal stack-card glass-panel rounded-2xl p-6" style="transition-delay: 0.2s;">
+                <div class="reveal stack-card glass-panel rounded-2xl p-6 border border-white/40 dark:border-white/5 hover:border-purple-400/50 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 group" style="transition-delay: 0.2s;">
                     <div class="flex items-center gap-2 mb-4">
-                        <i data-lucide="wrench" class="w-4 h-4 text-primary-500"></i>
-                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">工具 & 其他</h3>
+                        <i data-lucide="wrench" class="w-4 h-4 text-purple-500 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">工程工具 & AI</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="chip">Git / GitFlow</span>
@@ -284,6 +284,19 @@
                         <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
                             基于 Go 编写的数据库事务补偿 CLI。遵循类似 <code class="text-primary-600 dark:text-primary-400 font-mono text-xs bg-pink-50 dark:bg-pink-950/40 px-1.5 py-0.5 rounded">git revert</code> 语义，深度解析 MySQL 8 ROW binlog，自动化生成自包含补偿计划并安全逆向或重放事务。
                         </p>
+
+                        <!-- Micro Terminal Preview -->
+                        <div class="rounded-xl bg-slate-950/90 dark:bg-black/90 p-3.5 font-mono text-xs text-slate-300 border border-slate-800 shadow-inner mb-6 space-y-1.5 overflow-x-auto">
+                            <div class="flex items-center gap-1.5 mb-2 pb-1 border-b border-slate-800/80">
+                                <span class="w-2 h-2 rounded-full bg-red-500/80"></span>
+                                <span class="w-2 h-2 rounded-full bg-yellow-500/80"></span>
+                                <span class="w-2 h-2 rounded-full bg-green-500/80"></span>
+                                <span class="text-[10px] text-slate-500 ml-2">unredo CLI</span>
+                            </div>
+                            <div class="text-emerald-400">$ unredo revert --binlog-pos=1540 --apply</div>
+                            <div class="text-slate-400 text-[11px]">✔ Parsed 12 ROW events from binlog</div>
+                            <div class="text-pink-400 text-[11px]">✔ 12 inverse SQL compensating ops committed</div>
+                        </div>
                     </div>
                     <div class="pt-5 border-t border-slate-200/60 dark:border-slate-800/80 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
                         <span class="flex items-center gap-1.5">
