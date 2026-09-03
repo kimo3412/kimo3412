@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>为啥这个网站长这样 | GIRIMI Blog</title>
 
+    <!-- Resource Hints for Fast Asset Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+
     <meta name="description" content="聊聊我这个个人主页的设计思路，颜色、玻璃、动效、留白都怎么想的。">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GIRIMI Blog">
     <meta property="og:title" content="为啥这个网站长这样">
     <meta property="og:description" content="个人主页设计复盘，聊聊为啥选这套视觉。">
+    <meta name="twitter:card" content="summary">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -67,7 +76,7 @@
                     <i data-lucide="arrow-left" class="w-4 h-4"></i>
                     返回博客
                 </a>
-                <button id="theme-toggle"
+                <button id="theme-toggle" aria-label="切换深色/浅色模式"
                     class="magnetic p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400">
                     <i data-lucide="moon" class="w-4 h-4"></i>
                 </button>
@@ -228,6 +237,19 @@
                 </a>
             </div>
 
+            <!-- Comments Section (Powered by Giscus) -->
+            <section id="comments" class="mt-16 pt-10 border-t border-slate-200 dark:border-slate-800 reveal">
+                <div class="mb-6 flex items-center justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1">交流讨论</h2>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">基于 GitHub Discussions 驱动，零服务器零广告</p>
+                    </div>
+                    <i data-lucide="message-square" class="w-6 h-6 text-primary-500"></i>
+                </div>
+                <div class="giscus-container glass-panel rounded-3xl p-4 md:p-6">
+                    <div class="giscus"></div>
+                </div>
+            </section>
         </article>
     </main>
 

@@ -1,18 +1,23 @@
 // GIRIMI Static Site - Shared JavaScript
 
-// ===== INITIALIZE ICONS =====
+// ===== INITIALIZE ICONS & CORE MODULES =====
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     initScrollReveal();
     initThemeToggle();
     initMobileMenu();
-    initCustomCursor();
-    initMagneticEffect();
     initBlobAnimation();
     initNavbarScroll();
     initScramble();
     initRoleRotate();
     initTilt();
+    initScrollspy();
+    initReadingProgress();
+    initCodeCopy();
+    initBackToTop();
+    initDynamicYear();
+    initGiscus();
+    initCopyEmail();
 });
 
 // ===== SCROLL REVEAL =====
@@ -29,6 +34,8 @@ function initScrollReveal() {
 function initThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     if (!themeToggle) return;
+
+    themeToggle.setAttribute('aria-label', '切换深色/浅色模式');
 
     const html = document.documentElement;
 
@@ -53,6 +60,7 @@ function initThemeToggle() {
         const isDark = html.classList.contains('dark');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
         updateThemeIcon(isDark);
+        syncGiscusTheme(isDark);
     });
 }
 
@@ -63,12 +71,17 @@ function initMobileMenu() {
 
     if (!menuBtn || !menu) return;
 
+    menuBtn.setAttribute('aria-label', '切换导航菜单');
+    menuBtn.setAttribute('aria-expanded', 'false');
+
     menuBtn.addEventListener('click', () => {
         menu.classList.toggle('hidden');
+        const isExpanded = !menu.classList.contains('hidden');
+        menuBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
 
         // 切换图标
         const icon = menuBtn.querySelector('i');
-        if (menu.classList.contains('hidden')) {
+        if (!isExpanded) {
             icon.setAttribute('data-lucide', 'menu');
         } else {
             icon.setAttribute('data-lucide', 'x');
@@ -80,23 +93,12 @@ function initMobileMenu() {
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             menu.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
             const icon = menuBtn.querySelector('i');
             icon.setAttribute('data-lucide', 'menu');
             lucide.createIcons();
         });
     });
-}
-
-// ===== CUSTOM CURSOR =====
-// Disabled - using default browser cursor
-function initCustomCursor() {
-    return;
-}
-
-// ===== MAGNETIC EFFECT =====
-// Disabled per user request
-function initMagneticEffect() {
-    return; // Magnetic effect disabled
 }
 
 // ===== BLOB ANIMATION (FLUID BACKGROUND) =====
@@ -307,3 +309,206 @@ function initTilt() {
         window.addEventListener('resize', () => { rect = null; });
     });
 }
+
+// ===== SCROLLSPY (NAVBAR ACTIVE LINK) =====
+function initScrollspy() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#navbar a[href^="#"]');
+    if (!sections.length || !navLinks.length) return;
+
+    function updateActiveNav() {
+        const scrollY = window.scrollY;
+        let activeId = '';
+
+        sections.forEach(section => {
+            const top = section.offsetTop - 150;
+            const height = section.offsetHeight;
+            if (scrollY >= top && scrollY < top + height) {
+                activeId = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === `#${activeId}`) {
+                link.classList.add('nav-link-active');
+            } else {
+                link.classList.remove('nav-link-active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+}
+
+// ===== READING PROGRESS BAR =====
+function initReadingProgress() {
+    const article = document.querySelector('.blog-post-content, article');
+    if (!article) return;
+
+    let progressBar = document.querySelector('.reading-progress-bar');
+    if (!progressBar) {
+        progressBar = document.createElement('div');
+        progressBar.className = 'reading-progress-bar';
+        document.body.appendChild(progressBar);
+    }
+
+    function updateProgress() {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight <= 0) {
+            progressBar.style.width = '0%';
+            return;
+        }
+        const progress = Math.min(100, Math.max(0, (window.scrollY / totalHeight) * 100));
+        progressBar.style.width = `${progress}%`;
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+}
+
+// ===== CODE COPY FUNCTIONALITY =====
+function initCodeCopy() {
+    const codeBlocks = document.querySelectorAll('.blog-post-content pre');
+    if (!codeBlocks.length) return;
+
+    codeBlocks.forEach(pre => {
+        if (pre.parentElement && pre.parentElement.classList.contains('code-wrapper')) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-wrapper';
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-code-btn';
+        copyBtn.type = 'button';
+        copyBtn.setAttribute('aria-label', '复制代码');
+        copyBtn.innerHTML = '<i data-lucide="copy" class="w-3.5 h-3.5"></i><span>复制</span>';
+
+        copyBtn.addEventListener('click', async () => {
+            const code = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
+            try {
+                await navigator.clipboard.writeText(code);
+                copyBtn.classList.add('copied');
+                copyBtn.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5"></i><span>已复制</span>';
+                if (window.lucide) lucide.createIcons();
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                    copyBtn.innerHTML = '<i data-lucide="copy" class="w-3.5 h-3.5"></i><span>复制</span>';
+                    if (window.lucide) lucide.createIcons();
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+        });
+
+        wrapper.appendChild(copyBtn);
+    });
+
+    if (window.lucide) lucide.createIcons();
+}
+
+// ===== BACK TO TOP BUTTON =====
+function initBackToTop() {
+    let btn = document.getElementById('back-to-top');
+    if (!btn) {
+        btn = document.createElement('button');
+        btn.id = 'back-to-top';
+        btn.className = 'back-to-top glass-panel text-slate-600 dark:text-slate-300';
+        btn.setAttribute('aria-label', '返回顶部');
+        btn.innerHTML = '<i data-lucide="arrow-up" class="w-5 h-5"></i>';
+        document.body.appendChild(btn);
+        if (window.lucide) lucide.createIcons();
+    }
+
+    function toggleBtn() {
+        if (window.scrollY > 350) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    window.addEventListener('scroll', toggleBtn, { passive: true });
+    toggleBtn();
+}
+
+// ===== DYNAMIC YEAR UPDATE =====
+function initDynamicYear() {
+    const currentYear = new Date().getFullYear();
+    document.querySelectorAll('footer p').forEach(p => {
+        p.innerHTML = p.innerHTML.replace(/20\d{2}/g, currentYear);
+    });
+}
+
+// ===== GISCUS INTEGRATION & THEME SYNC =====
+function initGiscus() {
+    const container = document.querySelector('.giscus');
+    if (!container) return;
+
+    const isDark = document.documentElement.classList.contains('dark');
+    const giscusTheme = isDark ? 'dark_dimmed' : 'light';
+
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', 'kimo3412/kimo3412');
+    script.setAttribute('data-repo-id', 'R_kgDOMu7xOA');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'DIC_kwDOMu7xOM4CkmF-');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'top');
+    script.setAttribute('data-theme', giscusTheme);
+    script.setAttribute('data-lang', 'zh-CN');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+
+    container.appendChild(script);
+}
+
+function syncGiscusTheme(isDark) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    const theme = isDark ? 'dark_dimmed' : 'light';
+    iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        'https://giscus.app'
+    );
+}
+
+// ===== COPY EMAIL INTERACTION =====
+function initCopyEmail() {
+    const btn = document.getElementById('copy-email-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', async () => {
+        const email = btn.getAttribute('data-email') || 'shanrzkimo@outlook.com';
+        try {
+            await navigator.clipboard.writeText(email);
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="check" class="w-5 h-5 text-green-500"></i><span class="text-green-600 dark:text-green-400">已复制邮箱</span>';
+            if (window.lucide) lucide.createIcons();
+
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                if (window.lucide) lucide.createIcons();
+            }, 2000);
+        } catch (err) {
+            console.error('Failed to copy email: ', err);
+        }
+    });
+}
+
+
+

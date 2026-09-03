@@ -7,23 +7,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ===== CUSTOM GIF CURSOR ===== */
-.cursor-gif {
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    width: 32px;
-    /* 调整这里改变光标大小 */
-    height: 32px;
-    transform: translate(-50%, -50%);
-    display: none;
-}
 
-/* 隐藏旧的光标元素 */
-.cursor-core,
-.cursor-aura {
-    display: none !important;
-}
 
 /* ===== MESH BACKGROUND ===== */
 .mesh-bg {
@@ -290,4 +274,130 @@ body {
 [data-roles].role-fade-in {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ===== ACTIVE NAV LINK (Scrollspy) ===== */
+.nav-link-active {
+    color: #db2777 !important;
+}
+
+.dark .nav-link-active {
+    color: #f472b6 !important;
+}
+
+.nav-link-active::after {
+    width: 100% !important;
+}
+
+/* ===== READING PROGRESS BAR ===== */
+.reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #ec4899, #db2777, #f472b6);
+    z-index: 100;
+    pointer-events: none;
+    transition: width 0.1s ease-out;
+}
+
+/* ===== CODE BLOCK & COPY BUTTON ===== */
+.blog-post-content pre {
+    position: relative;
+    background: rgba(15, 23, 42, 0.9);
+    color: #f8fafc;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .blog-post-content pre {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.blog-post-content pre code {
+    background: transparent !important;
+    padding: 0 !important;
+    color: inherit !important;
+    border-radius: 0 !important;
+    font-size: inherit !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+}
+
+.code-wrapper pre {
+    margin: 0;
+}
+
+.copy-code-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    user-select: none;
+    z-index: 10;
+}
+
+.copy-code-btn:hover {
+    background: rgba(236, 72, 153, 0.25);
+    border-color: rgba(236, 72, 153, 0.4);
+    color: #fff;
+}
+
+.copy-code-btn.copied {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+}
+
+/* ===== BACK TO TOP BUTTON ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 40;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.25);
 }

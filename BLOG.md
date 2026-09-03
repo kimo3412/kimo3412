@@ -133,9 +133,10 @@ cp blog/hello-world.html blog/你的-slug.html
 - `h2` 标题 — 加粗 + 上下 margin
 - `p` 段落 — 行高 1.8，段间距 1.25rem
 - `code` 行内代码 — 粉色背景小框
+- `<pre><code>` 多行代码块 — 自动支持暗色毛玻璃容器与右上角「一键复制代码」交互
 - `img` 图片 — 你自己加 `rounded-2xl my-8 w-full` 等 class
 
-支持的标签：`<p>` `<h2>` `<h3>` `<strong>` `<em>` `<code>` `<ul>` `<ol>` `<li>` `<a>` `<img>` `<figure>` `<figcaption>` `<blockquote>` 都行。
+支持的标签：`<p>` `<h2>` `<h3>` `<strong>` `<em>` `<code>` `<pre>` `<ul>` `<ol>` `<li>` `<a>` `<img>` `<figure>` `<figcaption>` `<blockquote>` 都行。
 
 ---
 
@@ -143,6 +144,8 @@ cp blog/hello-world.html blog/你的-slug.html
 
 复用主页的动效（自动生效）：
 
+- **顶部阅读进度条** — 页面向下滚动时顶部粉色细线平滑填充（全自动）
+- **悬浮返回顶部** — 滚动超过一屏后右下角出现毛玻璃箭头按钮（全自动）
 - `class="reveal"` — 滚动到时淡入
 - `data-tilt` — hover 3D 倾斜
 - `<h1 data-scramble>` — 标题字符乱码进场

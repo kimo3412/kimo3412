@@ -6,10 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | GIRIMI</title>
 
+    <!-- Resource Hints for Fast Asset Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="GIRIMI's Blog - Thoughts on code, design, and life.">
+    <meta property="og:type" content="blog">
+    <meta property="og:site_name" content="GIRIMI Blog">
     <meta property="og:title" content="Blog | GIRIMI">
     <meta property="og:description" content="Thoughts on code, design, and life.">
+    <meta name="twitter:card" content="summary">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -43,10 +52,6 @@
 
 <body class="text-slate-800 dark:text-slate-200 transition-colors duration-700 antialiased">
 
-    <!-- Custom Cursor Elements -->
-    <div class="cursor-core"></div>
-    <div class="cursor-aura"></div>
-
     <!-- Mesh Background -->
     <div class="mesh-bg">
         <div class="blob blob-1"></div>
@@ -71,7 +76,7 @@
                     class="magnetic text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">首页</a>
                 <a href="../links.html"
                     class="magnetic text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Links</a>
-                <button id="theme-toggle"
+                <button id="theme-toggle" aria-label="切换深色/浅色模式"
                     class="magnetic p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400">
                     <i data-lucide="moon" class="w-4 h-4"></i>
                 </button>

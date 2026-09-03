@@ -6,11 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio 2024 | GIRIMI Projects</title>
 
+    <!-- Resource Hints for Fast Asset Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+
     <!-- SEO Meta Tags -->
     <meta name="description"
         content="Portfolio 2024 - A premium personal website built with HTML, Tailwind CSS, and GSAP animations.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GIRIMI Projects">
     <meta property="og:title" content="Portfolio 2024 | GIRIMI Projects">
     <meta property="og:description" content="A premium personal website with fluid animations and modern design.">
+    <meta name="twitter:card" content="summary">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -44,10 +53,6 @@
 
 <body class="text-slate-800 dark:text-slate-200 transition-colors duration-700 antialiased">
 
-    <!-- Custom Cursor Elements -->
-    <div class="cursor-core"></div>
-    <div class="cursor-aura"></div>
-
     <!-- Mesh Background -->
     <div class="mesh-bg">
         <div class="blob blob-1"></div>
@@ -73,7 +78,7 @@
                     <i data-lucide="arrow-left" class="w-4 h-4"></i>
                     返回首页
                 </a>
-                <button id="theme-toggle"
+                <button id="theme-toggle" aria-label="切换深色/浅色模式"
                     class="magnetic p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400">
                     <i data-lucide="moon" class="w-4 h-4"></i>
                 </button>
