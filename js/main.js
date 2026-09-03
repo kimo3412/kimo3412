@@ -19,16 +19,41 @@ document.addEventListener('DOMContentLoaded', () => {
     initDynamicYear();
     initGiscus();
     initCopyEmail();
+    initMouseSpotlight();
+    initCommandPalette();
+    initConsoleEasterEgg();
 });
 
-// ===== SCROLL REVEAL =====
+// ===== SCROLL REVEAL (Fast & Robust) =====
 function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+
+    function checkInitialVisibility() {
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        reveals.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= vh + 80) {
+                el.classList.add('active');
+            }
+        });
+    }
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
         });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px 120px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+    checkInitialVisibility();
+    window.addEventListener('scroll', checkInitialVisibility, { passive: true });
 }
 
 // ===== THEME TOGGLE =====
@@ -525,6 +550,175 @@ function initBrandIcons() {
         el.parentNode.replaceChild(wrapper, el);
     });
 }
+
+// ===== INTERACTIVE MOUSE SPOTLIGHT =====
+function initMouseSpotlight() {
+    let spotlight = document.querySelector('.mouse-spotlight');
+    if (!spotlight) {
+        spotlight = document.createElement('div');
+        spotlight.className = 'mouse-spotlight';
+        document.body.prepend(spotlight);
+    }
+
+    let rafId = null;
+    window.addEventListener('pointermove', (e) => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+            spotlight.style.setProperty('--mouse-x', `${e.clientX}px`);
+            spotlight.style.setProperty('--mouse-y', `${e.clientY}px`);
+            if (!spotlight.classList.contains('active')) {
+                spotlight.classList.add('active');
+            }
+        });
+    }, { passive: true });
+
+    document.addEventListener('pointerleave', () => {
+        spotlight.classList.remove('active');
+    });
+}
+
+// ===== COMMAND PALETTE (Cmd+K / Ctrl+K) =====
+function initCommandPalette() {
+    const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+    const shortcutLabel = isMac ? '⌘K' : 'Ctrl+K';
+
+    // 动态创建命令面板结构
+    const paletteBackdrop = document.createElement('div');
+    paletteBackdrop.id = 'cmd-palette';
+    paletteBackdrop.className = 'cmd-palette-backdrop';
+    paletteBackdrop.innerHTML = `
+        <div class="cmd-palette-modal glass-panel" role="dialog" aria-modal="true">
+            <div class="p-4 border-b border-slate-200/60 dark:border-slate-800 flex items-center gap-3">
+                <i data-lucide="search" class="w-5 h-5 text-primary-500 shrink-0"></i>
+                <input id="cmd-input" type="text" placeholder="输入搜索指令或直接跳转... (ESC 关闭)" 
+                    class="w-full bg-transparent border-none outline-none text-base text-slate-800 dark:text-slate-100 placeholder-slate-400">
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-200/60 dark:bg-zinc-800 text-slate-500 shrink-0">ESC</span>
+            </div>
+            <div id="cmd-list" class="max-h-72 overflow-y-auto p-2 space-y-1">
+                <div class="cmd-item p-3 rounded-xl flex items-center justify-between selected" data-action="unredo">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="terminal" class="w-4 h-4 text-emerald-500"></i>
+                        <span class="text-sm font-semibold">Unredo (Go CLI 开源项目)</span>
+                    </div>
+                    <span class="text-xs text-slate-400 font-mono">GitHub 仓库</span>
+                </div>
+                <div class="cmd-item p-3 rounded-xl flex items-center justify-between" data-action="blog">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="book-open" class="w-4 h-4 text-pink-500"></i>
+                        <span class="text-sm font-semibold">赛博废话档案馆</span>
+                    </div>
+                    <span class="text-xs text-slate-400 font-mono">技术博客</span>
+                </div>
+                <div class="cmd-item p-3 rounded-xl flex items-center justify-between" data-action="theme">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="sun-moon" class="w-4 h-4 text-amber-500"></i>
+                        <span class="text-sm font-semibold">切换深色 / 浅色模式</span>
+                    </div>
+                    <span class="text-xs text-slate-400 font-mono">主题换肤</span>
+                </div>
+                <div class="cmd-item p-3 rounded-xl flex items-center justify-between" data-action="email">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="mail" class="w-4 h-4 text-blue-500"></i>
+                        <span class="text-sm font-semibold">复制作者联系邮箱</span>
+                    </div>
+                    <span class="text-xs text-slate-400 font-mono">shanrzkimo@outlook.com</span>
+                </div>
+            </div>
+            <div class="p-3 bg-slate-100/50 dark:bg-zinc-900/50 border-t border-slate-200/40 dark:border-slate-800/60 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span>Navigate ↑↓  •  Select Enter</span>
+                <span>GIRIMI Command System</span>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(paletteBackdrop);
+    if (window.lucide) lucide.createIcons();
+
+    const input = paletteBackdrop.querySelector('#cmd-input');
+    const items = paletteBackdrop.querySelectorAll('.cmd-item');
+
+    function openPalette() {
+        paletteBackdrop.classList.add('open');
+        input.value = '';
+        input.focus();
+        filterItems('');
+    }
+
+    function closePalette() {
+        paletteBackdrop.classList.remove('open');
+    }
+
+    function filterItems(query) {
+        const q = query.toLowerCase().trim();
+        items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(q) ? 'flex' : 'none';
+        });
+        const visible = Array.from(items).filter(i => i.style.display !== 'none');
+        items.forEach(i => i.classList.remove('selected'));
+        if (visible.length > 0) visible[0].classList.add('selected');
+    }
+
+    function executeAction(action) {
+        closePalette();
+        switch (action) {
+            case 'unredo':
+                window.open('https://github.com/kimo3412/Unredo', '_blank');
+                break;
+            case 'blog':
+                window.location.href = window.location.pathname.includes('/blog/') ? 'index.html' : 'blog/index.html';
+                break;
+            case 'theme':
+                const themeBtn = document.getElementById('theme-toggle');
+                if (themeBtn) themeBtn.click();
+                break;
+            case 'email':
+                navigator.clipboard.writeText('shanrzkimo@outlook.com');
+                const copyBtn = document.getElementById('copy-email-btn');
+                if (copyBtn) copyBtn.click();
+                break;
+        }
+    }
+
+    // 快捷键监听
+    window.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            paletteBackdrop.classList.contains('open') ? closePalette() : openPalette();
+        } else if (e.key === 'Escape' && paletteBackdrop.classList.contains('open')) {
+            closePalette();
+        }
+    });
+
+    paletteBackdrop.addEventListener('click', (e) => {
+        if (e.target === paletteBackdrop) closePalette();
+    });
+
+    input.addEventListener('input', (e) => filterItems(e.target.value));
+
+    items.forEach(item => {
+        item.addEventListener('click', () => executeAction(item.getAttribute('data-action')));
+    });
+}
+
+// ===== CONSOLE EASTER EGG (F12 ASCII Art) =====
+function initConsoleEasterEgg() {
+    const banner = `
+%c  ____ ___ ____  ___ __  __ ___ 
+ / ___|_ _|  _ \\|_ _|  \\/  |_ _|
+| |  _ | || |_) || || |\\/| || | 
+| |_| || ||  _ < | || |  | || | 
+ \\____|___|_| \\_\\___|_|  |_|___|
+    `;
+    console.log(
+        banner,
+        'color: #ec4899; font-weight: bold; font-family: monospace; font-size: 13px;'
+    );
+    console.log(
+        '%c🚀 Welcome to GIRIMI\'s Cyber Space! Built with Pure Logic & Passion. \n👉 GitHub: https://github.com/kimo3412',
+        'color: #f472b6; font-size: 12px; font-weight: 500;'
+    );
+}
+
 
 
 

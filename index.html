@@ -89,6 +89,13 @@
                         class="link-underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Links</a>
                 </div>
 
+                <!-- Command Palette Trigger Button -->
+                <button onclick="window.dispatchEvent(new KeyboardEvent('keydown', {key: 'k', ctrlKey: true, bubbles: true}))" aria-label="打开快捷命令面板 (Ctrl+K)"
+                    class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-xs font-mono text-slate-500 dark:text-slate-400 cursor-pointer">
+                    <i data-lucide="command" class="w-3.5 h-3.5 text-primary-500"></i>
+                    <span>K</span>
+                </button>
+
                 <!-- Theme Toggle -->
                 <button id="theme-toggle" aria-label="切换深色/浅色模式"
                     class="p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/5 dark:bg-black/5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-500 dark:text-slate-400">
@@ -259,7 +266,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Project Card 1: Unredo -->
                 <div
-                    class="reveal group relative rounded-3xl p-8 glass-panel hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-500 flex flex-col justify-between border border-white/50 dark:border-white/10 hover:border-pink-300/60 dark:hover:border-pink-500/40 magnetic min-h-[22rem]" data-tilt>
+                    class="reveal group relative rounded-3xl p-8 glass-panel border-beam-card hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-500 flex flex-col justify-between border border-white/50 dark:border-white/10 hover:border-pink-300/60 dark:hover:border-pink-500/40 magnetic min-h-[22rem]" data-tilt>
                     <div>
                         <div class="flex items-center justify-between gap-3 mb-6">
                             <div class="flex flex-wrap gap-2">
