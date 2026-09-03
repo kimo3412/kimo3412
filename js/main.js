@@ -29,15 +29,19 @@ function initScrollReveal() {
     const reveals = document.querySelectorAll('.reveal');
     if (!reveals.length) return;
 
-    function checkInitialVisibility() {
-        const vh = window.innerHeight || document.documentElement.clientHeight;
+    function revealVisible() {
+        const vh = window.innerHeight || document.documentElement.clientHeight || 900;
         reveals.forEach(el => {
             const rect = el.getBoundingClientRect();
-            if (rect.top <= vh + 80) {
+            if (rect.top <= vh + 120) {
                 el.classList.add('active');
             }
         });
     }
+
+    revealVisible();
+    setTimeout(revealVisible, 100);
+    setTimeout(revealVisible, 400);
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -47,13 +51,13 @@ function initScrollReveal() {
             }
         });
     }, {
-        threshold: 0.05,
-        rootMargin: '0px 0px 120px 0px'
+        threshold: 0.01,
+        rootMargin: '0px 0px 150px 0px'
     });
 
     reveals.forEach(el => observer.observe(el));
-    checkInitialVisibility();
-    window.addEventListener('scroll', checkInitialVisibility, { passive: true });
+    window.addEventListener('scroll', revealVisible, { passive: true });
+    window.addEventListener('resize', revealVisible, { passive: true });
 }
 
 // ===== THEME TOGGLE =====
